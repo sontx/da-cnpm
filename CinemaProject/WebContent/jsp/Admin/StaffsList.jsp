@@ -1,3 +1,5 @@
+<%@page
+	import="com.dutproject.cinemaproject.model.bean.Account.Permission"%>
 <%@page import="com.dutproject.cinemaproject.model.bean.Staff"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,9 +13,9 @@
 <body>
 	<%
 		List<Staff> staffs = (List<Staff>) request.getAttribute("staffs");
-		if (staffs.size() > 0) {
+		if (staffs != null && staffs.size() > 0) {
 	%>
-	<table>
+	<table border="1">
 		<tr>
 			<td>Id</td>
 			<td>Full Name</td>
@@ -26,9 +28,21 @@
 		</tr>
 		<%
 			for (Staff staff : staffs) {
+					String type = "Unknown";
+					if (staff.getPermission() == Permission.FILM_MANAGER)
+						type = "Film Manager";
+					else if (staff.getPermission() == Permission.ROOM_MANAGER)
+						type = "Room Manager";
 		%>
 		<tr>
 			<td><%=staff.getId()%></td>
+			<td><%=staff.getFullName()%></td>
+			<td><%=staff.getUserName()%></td>
+			<td><%=staff.getPassword()%></td>
+			<td><%=staff.getBirthDay()%></td>
+			<td><%=staff.getPhoneNumber()%></td>
+			<td><%=staff.getIdentityCard()%></td>
+			<td><%=type%></td>
 		</tr>
 		<%
 			}
@@ -37,7 +51,7 @@
 	<%
 		} else {
 	%>
-
+			You don't have any staff.
 	<%
 		}
 	%>
