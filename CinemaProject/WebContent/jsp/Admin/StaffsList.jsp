@@ -15,7 +15,7 @@
 		List<Staff> staffs = (List<Staff>) request.getAttribute("staffs");
 		if (staffs != null && staffs.size() > 0) {
 	%>
-	<table border="1">
+	<table border="1" style="width:100%">
 		<tr>
 			<td>Id</td>
 			<td>Full Name</td>
@@ -25,6 +25,7 @@
 			<td>Phone Number</td>
 			<td>Identity Card</td>
 			<td>Type</td>
+			<td></td>
 		</tr>
 		<%
 			for (Staff staff : staffs) {
@@ -43,6 +44,11 @@
 			<td><%=staff.getPhoneNumber()%></td>
 			<td><%=staff.getIdentityCard()%></td>
 			<td><%=type%></td>
+			<td>
+				<a href="<%=request.getContextPath() + "/Admin/EditForm?id=" + staff.getId()%>">Edit</a>
+				<a onclick="return confirm('Are you sure?')"
+				 href="<%=request.getContextPath() + "/Admin/DeleteAction?id=" + staff.getId()%>">Delete</a>	
+			</td>
 		</tr>
 		<%
 			}
