@@ -28,7 +28,7 @@ public abstract class BaseServlet extends HttpServlet {
 		this.doWork();
 	}
 	
-	protected abstract void doWork() throws IOException;
+	protected abstract void doWork() throws IOException, ServletException;
 	
 	protected void setAttribute(String attributeName, Object attributeValue) {
 		request.getSession().setAttribute(attributeName, attributeValue);
