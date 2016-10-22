@@ -16,7 +16,8 @@
 		List<Staff> staffs = (List<Staff>) request.getAttribute("staffs");
 		if (staffs != null && staffs.size() > 0) {
 	%>
-	<table border="1" style="width: 100%">
+	<center>
+	<table border="1">
 		<tr>
 			<td>Id</td>
 			<td>Full Name</td>
@@ -62,5 +63,6 @@
 	<%
 		}
 	%>
+	</center>
 </body>
 </html>
