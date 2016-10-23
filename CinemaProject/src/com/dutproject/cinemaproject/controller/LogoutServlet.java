@@ -1,7 +1,11 @@
 package com.dutproject.cinemaproject.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -15,9 +19,10 @@ public class LogoutServlet extends BaseServlet {
     }
 
 	@Override
-	protected void doWork() throws IOException {
-		this.request.getSession().invalidate();
-		this.sendRedirect("jsp/loginForm.jsp");
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getSession().invalidate();
+		response.sendRedirect("jsp/loginForm.jsp");
 	}
 
 }
