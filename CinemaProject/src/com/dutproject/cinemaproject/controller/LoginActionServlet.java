@@ -1,7 +1,11 @@
 package com.dutproject.cinemaproject.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.dutproject.cinemaproject.model.bean.Account;
 import com.dutproject.cinemaproject.model.bo.AccountBO;
@@ -13,34 +17,39 @@ import com.dutproject.cinemaproject.model.bo.AccountBO;
 public class LoginActionServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoginActionServlet() {
-        super();
-    }
-
 	@Override
-	protected void doWork() throws IOException {
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Account account = new Account(username, password);
 		
 		AccountBO accountBO = new AccountBO();
-		switch (accountBO.isValidAccount(account)) {
+		Account.Permission permission = accountBO.isValidAccount(account);
+		
+		if (Account.Permission.NO_PERMISSION != permission) {
+			/*save user name to session with management account*/
+			request.getSession().setAttribute("username", account.getUsername());
+		}
+		
+		switch (permission) {
+		case ACCOUNT_MANAGER:
+			break;
 		case FILM_MANAGER:
-			this.saveUsernameToSession(account);
-			this.sendRedirect("jsp/filmManager.jsp");
 			break;
 		case ROOM_MANAGER:
 			break;
+		case SCHEDULE_MANAGER:
+			
+			break;
+		case TICKET_MANAGER:
+			break;
 		case NO_PERMISSION:
-			this.sendRedirect("jsp/loginForm.jsp");
+			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 			break;
 		default:
 			break;
 		}
 	}
 	
-	private void saveUsernameToSession(Account account) {
-		this.setAttribute("username", account.getUsername());
-	}
-
 }
