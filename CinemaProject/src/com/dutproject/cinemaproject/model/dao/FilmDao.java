@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.Film;
 import com.dutproject.cinemaproject.model.dao.service.IShowFilmService;
-import com.dutproject.cinemaproject.model.dao.test.FilmServieTest;
+import com.dutproject.cinemaproject.model.dao.test.FilmServiceTest;
 
 public class FilmDao implements IShowFilmService{
 	// replace FilmJdbc here;
-    FilmServieTest fimlServiceTest = new FilmServieTest();
+    FilmServiceTest fimlServiceTest = new FilmServiceTest();
 	@Override
 	public int getNumberOfFilms() {
 		// TODO Auto-generated method stub
