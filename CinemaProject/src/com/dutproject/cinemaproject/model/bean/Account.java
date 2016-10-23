@@ -6,7 +6,7 @@ public class Account {
 	private String permission;
 	
 	public static enum Permission {
-		NO_PERMISSION, FILM_MANAGER, ROOM_MANAGER
+		NO_PERMISSION, ACCOUNT_MANAGER, FILM_MANAGER, ROOM_MANAGER, SCHEDULE_MANAGER, TICKET_MANAGER
 	}
 
 	public Account(String username, String password) {
