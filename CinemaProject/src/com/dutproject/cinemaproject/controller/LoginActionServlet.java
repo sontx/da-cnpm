@@ -30,6 +30,9 @@ public class LoginActionServlet extends BaseServlet {
 		if (Account.Permission.NO_PERMISSION != permission) {
 			/*save user name to session with management account*/
 			request.getSession().setAttribute("username", account.getUsername());
+			
+			/*save permission to session with management account*/
+			request.getSession().setAttribute("permission", permission);
 		}
 		
 		switch (permission) {
