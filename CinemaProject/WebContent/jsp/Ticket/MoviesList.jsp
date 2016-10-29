@@ -32,7 +32,7 @@
 				<td><%=movie.getId()%></td>
 				<td><%=movie.getNameOfMovie()%></td>
 				<td><%=movie.getSchedule()%></td>
-				<td><a href="#">view</a></td>
+				<td><a href="TicketListServlet?id=<%=movie.getId()%>">view</a></td>
 			</tr>
 			<%
 				}

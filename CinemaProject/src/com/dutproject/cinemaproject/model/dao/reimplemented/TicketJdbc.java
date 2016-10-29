@@ -93,4 +93,9 @@ public class TicketJdbc extends JdbcService implements ITicketService {
 		}
 		return 0;
 	}
+
+	@Override
+	public String getNameOfMovie(int id) {
+		return null;
+	}
 }

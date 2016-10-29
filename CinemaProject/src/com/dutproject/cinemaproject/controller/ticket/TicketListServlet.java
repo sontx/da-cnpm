@@ -51,10 +51,14 @@ public class TicketListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
 		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
+		String idMovie = request.getParameter("id");
+		int id = Integer.parseInt(idMovie);
 
 		List<Ticket> tickets = ticketBO.getTickets(pageNumber * 50, 50);
+		String nameOfMovie = ticketBO.getNameOfMovie(id);
+		request.setAttribute("nameOfMovie", nameOfMovie);
 		request.setAttribute("tickets", tickets);
-		request.getRequestDispatcher("/jsp/Ticket/TicketsList.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/Ticket/TicketsList.jsp").forward(request, response);
 
 	}
 

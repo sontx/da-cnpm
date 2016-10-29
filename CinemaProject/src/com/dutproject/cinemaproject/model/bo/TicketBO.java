@@ -20,4 +20,8 @@ public class TicketBO {
 	public List<Movie> getMovies(int offset, int count) {
 		return ticketDAO.getMovies(offset, count);
 	}
+	
+	public String getNameOfMovie(int id) {
+		return ticketDAO.getNameOfMovie(id);
+	}
 }

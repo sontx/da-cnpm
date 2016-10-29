@@ -17,4 +17,6 @@ public interface ITicketService {
 	List <Movie> getMovies (int offset, int count);
 	
 	int getNumberOfMovies();
+
+	String getNameOfMovie(int id);
 }

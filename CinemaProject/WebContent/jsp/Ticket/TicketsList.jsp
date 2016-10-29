@@ -12,10 +12,11 @@
 <center>
 	<h1>List tickets</h1>
 </center>
-<center>
-	<h2>Train to Busan</h2>
-</center>
+
 <body>
+	<center>
+		<h2><%=request.getAttribute("nameOfMovie")%></h2>
+	</center>
 	<%
 		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
 		if (tickets.size() > 0) {
@@ -27,7 +28,6 @@
 				<td>Seat Number</td>
 				<td>State</td>
 				<td>Date Time</td>
-				<td>Action</td>
 			</tr>
 			<%
 				for (Ticket ticket : tickets) {
@@ -35,12 +35,9 @@
 			<tr>
 				<td><%=ticket.getId()%></td>
 				<td><%=ticket.getSeatNumber()%></td>
-				<td><%=ticket.getState()%></td>
-				<td><%=ticket.getDateTime()%></td>
-
 				<td><a
-					href="TicketUpdateServlet?id=<%=ticket.getId()%>&state=<%=ticket.getState()%>">edit</a>
-					<a href="/delete">delete</a></td>
+					href="TicketUpdateServlet?id=<%=ticket.getId()%>&state=<%=ticket.getState()%>"><%=ticket.getState()%></a></td>
+				<td><%=ticket.getDateTime()%></td>
 
 			</tr>
 			<%

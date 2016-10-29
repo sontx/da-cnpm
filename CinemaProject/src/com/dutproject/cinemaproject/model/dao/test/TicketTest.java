@@ -78,4 +78,9 @@ public class TicketTest implements ITicketService {
 		return 2;
 	}
 
+	@Override
+	public String getNameOfMovie(int id) {
+		return "Train to Busan";
+	}
+
 }

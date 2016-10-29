@@ -41,4 +41,8 @@ public class TicketDAO implements ITicketService {
 	public int getNumberOfMovies() {
 		return underlyingService.getNumberOfMovies();
 	}
+
+	public String getNameOfMovie(int id) {
+		return underlyingService.getNameOfMovie(id);
+	}
 }

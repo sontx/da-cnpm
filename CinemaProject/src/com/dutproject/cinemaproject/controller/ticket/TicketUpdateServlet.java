@@ -33,7 +33,7 @@ public class TicketUpdateServlet extends HttpServlet {
 		String ticketState = request.getParameter("state");
 		if (ticketState.equals("available")) {
 			ticketBO.updateTicketState(ticketId, "booked");
-			
+
 			System.out.println("ticket id" + ticketId);
 			System.out.println("ticket state booked");
 		} else {
@@ -43,7 +43,7 @@ public class TicketUpdateServlet extends HttpServlet {
 			System.out.println("ticket id" + ticketId);
 			System.out.println("ticket state available");
 		}
-		response.sendRedirect("/jsp/Ticket/TicketsList.jsp");
+		response.sendRedirect("/CinemaProject/TicketListServlet?id=" + ticketId);
 	}
 
 	/**
