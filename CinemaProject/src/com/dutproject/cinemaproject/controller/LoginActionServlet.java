@@ -30,6 +30,9 @@ public class LoginActionServlet extends BaseServlet {
 		if (Account.Permission.NO_PERMISSION != permission) {
 			/*save user name to session with management account*/
 			request.getSession().setAttribute("username", account.getUsername());
+			
+			/*save user permission to session with management account*/
+			request.getSession().setAttribute("permission", permission);
 		}
 		
 		switch (permission) {
@@ -40,7 +43,7 @@ public class LoginActionServlet extends BaseServlet {
 		case ROOM_MANAGER:
 			break;
 		case SCHEDULE_MANAGER:
-			
+			request.getRequestDispatcher("/ScheduleManagement").forward(request, response);
 			break;
 		case TICKET_MANAGER:
 			break;
