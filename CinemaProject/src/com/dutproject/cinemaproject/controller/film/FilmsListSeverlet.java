@@ -25,14 +25,6 @@ public class FilmsListSeverlet extends BaseServlet {
 	private FilmBo mFilmBo = FilmBo.getInstance();
 	private static final long serialVersionUID = 1L;
 
-	private int tryParseInt(String st, int defaultValue) {
-		try {
-			return Integer.parseInt(st);
-		} catch (NumberFormatException ignored) {
-			return defaultValue;
-		}
-	}
-
 	@Override
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

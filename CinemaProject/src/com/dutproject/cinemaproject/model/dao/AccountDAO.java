@@ -4,10 +4,10 @@ import com.dutproject.cinemaproject.model.bean.Account;
 
 public class AccountDAO {
 
-	public Account.Permission isValidAccount(Account account) {
+	public int isValidAccount(Account account) {
 		if ("admin1".equals(account.getUsername())) {
-			return Account.Permission.FILM_MANAGER;
+			return Account.FILM_MANAGER;
 		}
-		return Account.Permission.NO_PERMISSION;
+		return Account.NO_PERMISSION;
 	}
 }

@@ -11,4 +11,16 @@ public class AdminBO {
 	public List<Staff> getStaffs(int offset, int count) {
 		return adminDAO.getStaffs(offset, count);
 	}
+
+	public boolean checkExistUserName(String userName) {
+		return adminDAO.checkExistUserName(userName);
+	}
+
+	public boolean checkExistIdentifyCard(String identityCard) {
+		return adminDAO.checkExistIdentifyCard(identityCard);
+	}
+
+	public void addStaff(Staff staff) {
+		adminDAO.addStaff(staff);
+	}
 }

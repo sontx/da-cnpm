@@ -1,3 +1,4 @@
+<%@page import="com.dutproject.cinemaproject.utils.Validate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-		<form action="Admin/AddStaff" method="post">
+		<form action="AddStaffAction" method="post">
 			<table>
 				<tr>
 					<td>Full Name:</td>
@@ -38,15 +39,15 @@
 				<tr>
 					<td>Identity Card:</td>
 					<td><input style="width: 100%" type="number"
-						required="required" maxlength="9" name="phoneNumber"></td>
+						required="required" maxlength="9" name="identityCard"></td>
 				</tr>
 				<tr>
 					<td>Type:</td>
-					<td><select style="width: 100%">
-							<option value="schduleManager">Schedule Manager</option>
-							<option value="ticketManager">Ticket Manager</option>
-							<option value="filmManager">Film Manager</option>
-							<option value="roomManager">Room Manager</option>
+					<td><select style="width: 100%" name="staffType">
+							<option value="2">Film Manager</option>
+							<option value="3">Room Manager</option>
+							<option value="4">Schedule Manager</option>
+							<option value="5">Ticket Manager</option>
 					</select></td>
 				</tr>
 				<tr align="right">
