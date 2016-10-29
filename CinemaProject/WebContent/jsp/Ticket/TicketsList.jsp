@@ -9,12 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tickets</title>
 </head>
+<center>
+	<h1>List tickets</h1>
+</center>
+<center>
+	<h2>Train to Busan</h2>
+</center>
 <body>
 	<%
 		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
 		if (tickets.size() > 0) {
 	%>
-	<a href="/ticket">Add ticket</a>
 	<center>
 		<table border="1">
 			<tr>
@@ -33,7 +38,9 @@
 				<td><%=ticket.getState()%></td>
 				<td><%=ticket.getDateTime()%></td>
 
-				<td><a href="/edit">edit</a> <a href="/delete">delete</a></td>
+				<td><a
+					href="TicketUpdateServlet?id=<%=ticket.getId()%>&state=<%=ticket.getState()%>">edit</a>
+					<a href="/delete">delete</a></td>
 
 			</tr>
 			<%
