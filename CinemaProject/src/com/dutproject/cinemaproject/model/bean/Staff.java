@@ -1,14 +1,16 @@
 package com.dutproject.cinemaproject.model.bean;
 
+import java.sql.Date;
+
 public class Staff {
 	private int id;
 	private String fullName;
 	private String userName;
 	private String password;
-	private String birthDay;
+	private Date birthDay;
 	private String phoneNumber;
 	private String identityCard;
-	private Account.Permission permission;
+	private int permission;
 
 	public int getId() {
 		return id;
@@ -42,11 +44,11 @@ public class Staff {
 		this.password = password;
 	}
 
-	public String getBirthDay() {
+	public Date getBirthDay() {
 		return birthDay;
 	}
 
-	public void setBirthDay(String birthDay) {
+	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
 	}
 
@@ -66,11 +68,11 @@ public class Staff {
 		this.identityCard = identityCard;
 	}
 
-	public Account.Permission getPermission() {
+	public int getPermission() {
 		return permission;
 	}
 
-	public void setPermission(Account.Permission permission) {
+	public void setPermission(int permission) {
 		this.permission = permission;
 	}
 }

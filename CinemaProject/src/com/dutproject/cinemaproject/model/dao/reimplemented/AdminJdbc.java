@@ -39,4 +39,22 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 		return null;
 	}
 
+	@Override
+	public boolean checkExistUserName(String userName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean checkExistIdentifyCard(String identityCard) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void addStaff(Staff staff) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

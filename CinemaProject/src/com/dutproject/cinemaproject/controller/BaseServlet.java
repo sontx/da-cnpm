@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	protected int tryParseInt(String st, int defaultValue) {
+		try {
+			return Integer.parseInt(st);
+		} catch (NumberFormatException ignored) {
+			return defaultValue;
+		}
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doWork(request, response);
 	}

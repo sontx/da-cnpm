@@ -20,5 +20,18 @@ public class AdminDAO implements IAdminService {
 	public List<Staff> getStaffs(int offset, int count) {
 		return underlyingService.getStaffs(offset, count);
 	}
+	
+	@Override
+	public boolean checkExistUserName(String userName) {
+		return underlyingService.checkExistUserName(userName);
+	}
+
+	public boolean checkExistIdentifyCard(String identityCard) {
+		return underlyingService.checkExistIdentifyCard(identityCard);
+	}
+
+	public void addStaff(Staff staff) {
+		underlyingService.addStaff(staff);
+	}
 
 }
