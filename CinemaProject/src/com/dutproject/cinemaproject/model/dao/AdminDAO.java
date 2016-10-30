@@ -34,4 +34,16 @@ public class AdminDAO implements IAdminService {
 		underlyingService.addStaff(staff);
 	}
 
+	public Staff getStaff(int staffId) {
+		return underlyingService.getStaff(staffId);
+	}
+
+	public Staff getStaffByIdentifyCard(String identityCard) {
+		return underlyingService.getStaffByIdentifyCard(identityCard);
+	}
+
+	public void updateStaff(Staff staff) {
+		underlyingService.updateStaff(staff);
+	}
+
 }

@@ -73,4 +73,41 @@ public class AdminTest implements IAdminService {
 		
 	}
 
+	@Override
+	public Staff getStaff(int staffId) {
+		Staff staff = new Staff();
+		staff.setId(1);
+		staff.setBirthDay(Date.valueOf("1993-3-3"));
+		staff.setFullName("tran xuan son");
+		staff.setIdentityCard("102120250");
+		staff.setPassword("son dep trai");
+		staff.setPermission(Account.FILM_MANAGER);
+		staff.setPhoneNumber("01647891437");
+		staff.setUserName("sontx1");
+		return staff;
+	}
+
+	@Override
+	public Staff getStaffByIdentifyCard(String identityCard) {
+		if (identityCard.equals("123")) {
+			Staff staff = new Staff();
+			staff.setId(1);
+			staff.setBirthDay(Date.valueOf("1993-3-3"));
+			staff.setFullName("tran xuan son");
+			staff.setIdentityCard("102120250");
+			staff.setPassword("son dep trai");
+			staff.setPermission(Account.FILM_MANAGER);
+			staff.setPhoneNumber("01647891437");
+			staff.setUserName("sontx1");
+			return staff;
+		}
+		return null;
+	}
+
+	@Override
+	public void updateStaff(Staff staff) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
