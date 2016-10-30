@@ -1,5 +1,3 @@
-<%@page
-	import="com.dutproject.cinemaproject.model.bean.Account.Permission"%>
 <%@page import="com.dutproject.cinemaproject.model.bean.Staff"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

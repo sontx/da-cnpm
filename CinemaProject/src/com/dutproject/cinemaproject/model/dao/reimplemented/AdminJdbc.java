@@ -57,4 +57,22 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 		
 	}
 
+	@Override
+	public Staff getStaff(int staffId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Staff getStaffByIdentifyCard(String identityCard) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateStaff(Staff staff) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

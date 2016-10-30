@@ -23,4 +23,16 @@ public class AdminBO {
 	public void addStaff(Staff staff) {
 		adminDAO.addStaff(staff);
 	}
+
+	public Staff getStaff(int staffId) {
+		return adminDAO.getStaff(staffId);
+	}
+
+	public Staff getStaffByIdentifyCard(String identityCard) {
+		return adminDAO.getStaffByIdentifyCard(identityCard);
+	}
+
+	public void updateStaff(Staff staff) {
+		adminDAO.updateStaff(staff);
+	}
 }
