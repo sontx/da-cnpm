@@ -1,5 +1,4 @@
-<%@page
-	import="com.dutproject.cinemaproject.model.bean.Account.Permission"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.Account"%>
 <%@page import="com.dutproject.cinemaproject.model.bean.Staff"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,11 +30,7 @@
 		</tr>
 		<%
 			for (Staff staff : staffs) {
-					String type = "Unknown";
-					if (staff.getPermission() == Permission.FILM_MANAGER)
-						type = "Film Manager";
-					else if (staff.getPermission() == Permission.ROOM_MANAGER)
-						type = "Room Manager";
+					String type = Account.getPermissionString(staff.getPermission());
 		%>
 		<tr>
 			<td><%=staff.getId()%></td>

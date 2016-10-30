@@ -40,5 +40,19 @@ public class Account {
 	public void setPermission(int permission) {
 		this.permission = permission;
 	}
+	
+	public static String getPermissionString(int permission) {
+		if (permission == ACCOUNT_MANAGER)
+			return "Account Manager";
+		if (permission == FILM_MANAGER)
+			return "Film Manager";
+		if (permission == ROOM_MANAGER)
+			return "Room Manager";
+		if (permission == SCHEDULE_MANAGER)
+			return "Schedule Manager";
+		if (permission == TICKET_MANAGER)
+			return "Ticket Manager";
+		return "No Permission";
+	}
 
 }
