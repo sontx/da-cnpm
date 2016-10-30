@@ -24,5 +24,9 @@ public class FilmBo {
 		// TODO Auto-generated method stub
 		return filmDao.getFilms(1, 100);
 	}
+	
+	public boolean addFilm(Film film){
+		return filmDao.addFilm(film);
+	}
 
 }
