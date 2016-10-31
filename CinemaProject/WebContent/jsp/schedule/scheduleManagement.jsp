@@ -48,15 +48,19 @@ function showNotification() {
 	FilmBO filmBO = new FilmBO();
 	RoomBO roomBO = new RoomBO();
 	for (Schedule schedule : listSchedules) {
+		String filmName = filmBO.getFilmById(schedule.getFilmId()).getFilmName();
+		String roomName = roomBO.getRoomById(schedule.getRoomId()).getRoomName();
+		String time = schedule.periodOfTimeToString();
+		String deleteConfirmMessage = String.format("Bạn có muốn xóa lịch chiếu %s tại %s lúc %s?", filmName, roomName, time);
 		%>
 	<tr>
 		<td><%=index++ %></td>
-		<td><%=filmBO.getFilmById(schedule.getFilmId()).getFilmName() %></td>
-		<td><%=roomBO.getRoomById(schedule.getRoomId()).getRoomName() %></td>
-		<td><%=schedule.periodOfTimeToString() %></td>
+		<td><%=filmName %></td>
+		<td><%=roomName %></td>
+		<td><%=time %></td>
 		<td>
-			<a href="<%=request.getContextPath() %>/EditScheduleForm?id=<%=schedule.getScheduleId() %>">Chỉnh sửa</a>
-			<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>">Xóa</a>
+			<a href="<%=request.getContextPath() %>/EditScheduleForm?id=<%=schedule.getScheduleId() %> ">Chỉnh sửa</a>
+			<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>" onclick="return confirm('<%=deleteConfirmMessage %>')">Xóa</a>
 		</td>
 	</tr>
 		<%
