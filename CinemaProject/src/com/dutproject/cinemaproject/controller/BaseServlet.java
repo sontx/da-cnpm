@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+    public BaseServlet() {
+        super();
+    }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doWork(request, response);
 	}
