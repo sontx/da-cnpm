@@ -56,7 +56,7 @@ function showNotification() {
 		<td><%=schedule.periodOfTimeToString() %></td>
 		<td>
 			<a href="#<%=schedule.getScheduleId() %>">Chỉnh sửa</a>
-			<a href="#<%=schedule.getScheduleId() %>">Xóa</a>
+			<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>">Xóa</a>
 		</td>
 	</tr>
 		<%

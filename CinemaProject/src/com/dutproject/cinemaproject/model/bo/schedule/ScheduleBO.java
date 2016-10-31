@@ -20,4 +20,8 @@ public class ScheduleBO {
 		return scheduleDAO.getListSchedules(pageNumber);
 	}
 
+	public boolean deleteScheduleById(int id) {
+		return scheduleDAO.deleteScheduleById(id);
+	}
+
 }

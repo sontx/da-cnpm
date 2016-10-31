@@ -45,4 +45,26 @@ public class ScheduleTest implements IScheduleService {
 		return listSchedules;
 	}
 
+	@Override
+	public boolean deleteScheduleById(int id) {
+		for (Schedule schedule : listSchedules) {
+			if (id == schedule.getScheduleId()) {
+				listSchedules.remove(schedule);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateSchedule(Schedule schedule) {
+		for (int i = 0; i < listSchedules.size(); ++i) {
+			if (schedule.getScheduleId() == listSchedules.get(i).getScheduleId()) {
+				listSchedules.get(i).updateInfo(schedule);
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

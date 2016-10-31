@@ -77,4 +77,11 @@ public class Schedule {
 		this.endTime = endTime;
 	}
 
+	public void updateInfo(Schedule schedule) {
+		setFilmId(schedule.getFilmId());
+		setRoomId(schedule.getRoomId());
+		setStartTime(schedule.getStartTime());
+		setEndTime(schedule.getEndTime());
+	}
+
 }

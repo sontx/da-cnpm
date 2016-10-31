@@ -22,4 +22,14 @@ public class ScheduleDAO implements IScheduleService {
 		return scheduleService.getListSchedules(pageNumber);
 	}
 
+	@Override
+	public boolean deleteScheduleById(int id) {
+		return scheduleService.deleteScheduleById(id);
+	}
+
+	@Override
+	public boolean updateSchedule(Schedule schedule) {
+		return scheduleService.updateSchedule(schedule);
+	}
+
 }
