@@ -1,3 +1,8 @@
+<%@page import="com.dutproject.cinemaproject.model.bo.schedule.RoomBO"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.schedule.Room"%>
+<%@page import="com.dutproject.cinemaproject.model.bo.schedule.FilmBO"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.schedule.Film"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,21 +13,33 @@
 </head>
 <body>
 
-<jsp:include page="../navbar.jsp"></jsp:include>
+<jsp:include page="/jsp/navbar.jsp"></jsp:include>
 
 <form action="<%=request.getContextPath() %>/CreateSchedule" method="post">
 	Phim:
 	<select name="filmId">
 		<option value="-1" selected="selected">Chọn phim</option>
-		<option value="1">Phim 1</option>
-		<option value="2">Phim 2</option>
+		<%
+		List<Film> listFilms = new FilmBO().searchFilmByName("", 3);
+		for (Film film : listFilms) {
+			%>
+		<option value="<%=film.getFilmId() %>"><%=film.getFilmName() %></option>
+			<%
+		}
+		%>
 	</select>
 	<br>
 	Phòng chiếu:
 	<select name="roomId">
 		<option value="-1" selected="selected">Chọn phòng</option>
-		<option value="1">Phòng 1</option>
-		<option value="2">Phòng 2</option>
+		<%
+		List<Room> listRooms = new RoomBO().getAllRooms();
+		for (Room room : listRooms) {
+			%>
+		<option value="<%=room.getRoomId() %>"><%=room.getRoomName() %></option>
+			<%
+		}
+		%>
 	</select>
 	<br>
 	Thời gian chiếu:<br>
