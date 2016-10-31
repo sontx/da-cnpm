@@ -10,5 +10,8 @@
 	<h3>
 		<%=request.getAttribute("message")%>
 	</h3>
+	<h5>
+		<a href="<%=request.getAttribute("page")%>">OK</a>
+	</h5>
 </body>
 </html>
