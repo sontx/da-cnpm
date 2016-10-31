@@ -32,4 +32,9 @@ public class ScheduleDAO implements IScheduleService {
 		return scheduleService.updateSchedule(schedule);
 	}
 
+	@Override
+	public Schedule getScheduleById(int id) {
+		return scheduleService.getScheduleById(id);
+	}
+
 }

@@ -83,5 +83,5 @@ public class Schedule {
 		setStartTime(schedule.getStartTime());
 		setEndTime(schedule.getEndTime());
 	}
-
+	
 }

@@ -67,4 +67,14 @@ public class ScheduleTest implements IScheduleService {
 		return false;
 	}
 
+	@Override
+	public Schedule getScheduleById(int id) {
+		for (Schedule schedule : listSchedules) {
+			if (id == schedule.getScheduleId()) {
+				return schedule;
+			}
+		}
+		return null;
+	}
+
 }

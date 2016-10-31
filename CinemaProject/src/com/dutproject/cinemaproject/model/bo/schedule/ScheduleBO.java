@@ -24,4 +24,12 @@ public class ScheduleBO {
 		return scheduleDAO.deleteScheduleById(id);
 	}
 
+	public Schedule getScheduleById(int id) {
+		return scheduleDAO.getScheduleById(id);
+	}
+	
+	public boolean updateSchedule(Schedule schedule) {
+		return scheduleDAO.updateSchedule(schedule);
+	}
+	
 }

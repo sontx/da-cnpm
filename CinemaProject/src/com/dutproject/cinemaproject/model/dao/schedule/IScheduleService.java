@@ -10,4 +10,5 @@ public interface IScheduleService {
 	public List<Schedule> getListSchedules(int pageNumber);
 	public boolean deleteScheduleById(int id);
 	public boolean updateSchedule(Schedule schedule);
+	public Schedule getScheduleById(int id);
 }

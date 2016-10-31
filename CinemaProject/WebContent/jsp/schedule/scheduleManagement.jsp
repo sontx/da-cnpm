@@ -55,7 +55,7 @@ function showNotification() {
 		<td><%=roomBO.getRoomById(schedule.getRoomId()).getRoomName() %></td>
 		<td><%=schedule.periodOfTimeToString() %></td>
 		<td>
-			<a href="#<%=schedule.getScheduleId() %>">Chỉnh sửa</a>
+			<a href="<%=request.getContextPath() %>/EditScheduleForm?id=<%=schedule.getScheduleId() %>">Chỉnh sửa</a>
 			<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>">Xóa</a>
 		</td>
 	</tr>
