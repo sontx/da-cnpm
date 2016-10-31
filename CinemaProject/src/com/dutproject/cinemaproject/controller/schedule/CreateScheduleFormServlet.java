@@ -17,6 +17,10 @@ public class CreateScheduleFormServlet extends BaseServlet {
 	@Override
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if (!ScheduleManagementHelper.isLogined(request, response)) {
+			request.getRequestDispatcher("/Logout").forward(request, response);
+			return;
+		}
 		response.sendRedirect(request.getContextPath() + "/jsp/schedule/createScheduleForm.jsp");
 	}
 
