@@ -6,10 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.Account.Permission;
 import com.dutproject.cinemaproject.model.bo.AccountBO;
 
 /**
@@ -18,10 +16,6 @@ import com.dutproject.cinemaproject.model.bo.AccountBO;
 @WebServlet(name = "LoginAction", urlPatterns = { "/LoginAction" })
 public class LoginActionServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-
-    public LoginActionServlet() {
-        super();
-    }
 
 	@Override
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
@@ -32,33 +26,33 @@ public class LoginActionServlet extends BaseServlet {
 		
 		AccountBO accountBO = new AccountBO();
 		Account.Permission permission = accountBO.isValidAccount(account);
-		if (permission != Account.Permission.NO_PERMISSION) {
-			saveUsernameToSession(request.getSession(), account.getUsername());
-			savePermissionToSessioin(request.getSession(), permission);
+		
+		if (Account.Permission.NO_PERMISSION != permission) {
+			/*save user name to session with management account*/
+			request.getSession().setAttribute("username", account.getUsername());
+			
+			/*save permission to session with management account*/
+			request.getSession().setAttribute("permission", permission);
 		}
+		
 		switch (permission) {
+		case ACCOUNT_MANAGER:
+			break;
 		case FILM_MANAGER:
-			response.sendRedirect("jsp/filmManagement.jsp");
 			break;
 		case ROOM_MANAGER:
 			break;
 		case SCHEDULE_MANAGER:
-			request.getRequestDispatcher("/ScheduleManagement").forward(request, response);
+			
+			break;
+		case TICKET_MANAGER:
 			break;
 		case NO_PERMISSION:
-			response.sendRedirect("jsp/loginForm.jsp");
+			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 			break;
 		default:
 			break;
 		}
 	}
-
-	private void savePermissionToSessioin(HttpSession session, Permission permission) {
-		session.setAttribute("permission", permission);
-	}
-
-	private void saveUsernameToSession(HttpSession session, String username) {
-		session.setAttribute("username", username);
-	}
-
+	
 }
