@@ -16,13 +16,13 @@ import com.dutproject.cinemaproject.model.bo.RoomBO;
  * Servlet implementation class DanhSachKhoaServlet
  */
 
-public class DanhSachPhongServlet extends HttpServlet {
+public class ShowRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DanhSachPhongServlet() {
+	public ShowRoomServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
