@@ -5,7 +5,7 @@ import java.util.List;
 import com.dutproject.cinemaproject.model.bean.schedule.Schedule;
 
 public class ScheduleDAO implements IScheduleService {
-	private IScheduleService scheduleService = new ScheduleTest();
+	private IScheduleService scheduleService = ScheduleTest.getInstance();
 
 	@Override
 	public boolean createSchedule(Schedule schedule) {

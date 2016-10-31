@@ -9,8 +9,9 @@ import com.dutproject.cinemaproject.utils.schedule.Converter;
 
 public class ScheduleTest implements IScheduleService {
 	private List<Schedule> listSchedules = new ArrayList<Schedule>();
+	private static ScheduleTest instance = new ScheduleTest();
 	
-	public ScheduleTest() {
+	private ScheduleTest() {
 		Date startTime = Converter.stringToDate("10:00 01/01/2011");
 		Date endTime = Converter.stringToDate("12:00 01/01/2011");
 		listSchedules.add(new Schedule(1, 1, 1, Converter.dateToInt(startTime), Converter.dateToInt(endTime)));
@@ -24,9 +25,14 @@ public class ScheduleTest implements IScheduleService {
 		listSchedules.add(new Schedule(3, 3, 3, Converter.dateToInt(startTime), Converter.dateToInt(endTime)));
 	}
 	
+	public static ScheduleTest getInstance() {
+		return instance;
+	}
+	
 	@Override
 	public boolean createSchedule(Schedule schedule) {
-		return false;
+		listSchedules.add(schedule);
+		return true;
 	}
 
 	@Override
