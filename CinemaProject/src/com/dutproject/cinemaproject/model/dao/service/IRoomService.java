@@ -15,5 +15,7 @@ public interface IRoomService {
 	Room getRoom(int id);
 
 	void updateRoom(Room room);
+
+	void deleteRoom(int id);
 	
 }

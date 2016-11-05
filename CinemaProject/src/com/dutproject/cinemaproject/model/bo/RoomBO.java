@@ -30,4 +30,8 @@ public class RoomBO {
 		roomDAO.updateRoom(room);
 	}
 
+	public void deleteRoom(int id) {
+		roomDAO.deleteRoom(id);
+	}
+
 }

@@ -29,4 +29,8 @@ public class RoomDAO implements IRoomService {
 		underlyingService.updateRoom(room);
 	}
 
+	public void deleteRoom(int id) {
+		underlyingService.deleteRoom(id);
+	}
+
 }

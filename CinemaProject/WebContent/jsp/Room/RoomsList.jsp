@@ -39,7 +39,7 @@
 				<td><a
 					href="<%=request.getContextPath() + "/Room/UpdateRoomForm?id=" + room.getId()%>">Edit</a>
 					<a onclick="return confirm('Are you sure?')"
-					href="<%=request.getContextPath() + "/Admin/DeleteRoomAction?id=" + room.getId()%>">Delete</a>
+					href="<%=request.getContextPath() + "/Room/DeleteRoomAction?id=" + room.getId()%>">Delete</a>
 				</td>
 			</tr>
 			<%

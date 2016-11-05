@@ -151,4 +151,24 @@ public class RoomJdbc extends JdbcService implements IRoomService {
 		}
 	}
 
+	@Override
+	public void deleteRoom(int id) {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call room_deleteRoom(?)}");
+			callable.setInt(1, id);
+			callable.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+
+	}
+
 }
