@@ -30,6 +30,8 @@ public class UpdateStaffActionServlet extends AdminFilterServlet {
 		String staffType = request.getParameter("staffType");
 
 		int id = tryParseInt(sid, -1);
+		
+		request.setAttribute("page", "StaffsList");
 
 		if (adminBO.checkExistUserName(userName)) {
 			Staff anotherStaff = adminBO.getStaffByIdentifyCard(identityCard);

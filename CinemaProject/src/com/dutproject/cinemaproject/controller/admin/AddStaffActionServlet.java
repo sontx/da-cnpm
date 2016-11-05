@@ -48,6 +48,7 @@ public class AddStaffActionServlet extends AdminFilterServlet {
 				
 				adminBO.addStaff(staff);
 				
+				request.setAttribute("page", "StaffsList");
 				request.setAttribute("message", "Added susscess!");
 				request.getServletContext().getRequestDispatcher("/jsp/Success.jsp").forward(request, response);
 			} else {
