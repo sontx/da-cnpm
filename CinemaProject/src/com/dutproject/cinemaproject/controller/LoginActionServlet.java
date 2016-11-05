@@ -47,6 +47,7 @@ public class LoginActionServlet extends BaseServlet {
 			site = "Room/RoomsList";
 			break;
 		case Account.SCHEDULE_MANAGER:
+			site = "ScheduleManagement";
 			break;
 		case Account.TICKET_MANAGER:
 			site = "TicketListServlet";

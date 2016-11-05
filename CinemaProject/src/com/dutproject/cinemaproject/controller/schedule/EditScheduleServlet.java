@@ -1,6 +1,5 @@
 package com.dutproject.cinemaproject.controller.schedule;
 
-import com.dutproject.cinemaproject.controller.BaseServlet;
 import com.dutproject.cinemaproject.model.bean.schedule.Schedule;
 import com.dutproject.cinemaproject.model.bo.schedule.ScheduleBO;
 import com.dutproject.cinemaproject.utils.schedule.Converter;
@@ -13,17 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class EditScheduleServlet
- */
 @WebServlet(name = "EditSchedule", urlPatterns = { "/EditSchedule" })
-public class EditScheduleServlet extends BaseServlet {
+public class EditScheduleServlet extends ScheduleManagerFilterServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String str_date = request.getParameter("date");
 		String str_startTime = request.getParameter("startTime");
 		String str_endTime = request.getParameter("endTime");
