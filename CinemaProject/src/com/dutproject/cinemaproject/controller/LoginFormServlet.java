@@ -1,7 +1,11 @@
 package com.dutproject.cinemaproject.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class LoginFormServlet
@@ -10,13 +14,10 @@ import javax.servlet.annotation.WebServlet;
 public class LoginFormServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoginFormServlet() {
-        super();
-    }
-
 	@Override
-	protected void doWork() throws IOException {
-		this.sendRedirect("jsp/loginForm.jsp");
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendRedirect("jsp/loginForm.jsp");
 	}
 
 }

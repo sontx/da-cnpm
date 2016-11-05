@@ -1,7 +1,11 @@
 package com.dutproject.cinemaproject.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.dutproject.cinemaproject.model.bean.Account;
 import com.dutproject.cinemaproject.model.bo.AccountBO;
@@ -13,34 +17,42 @@ import com.dutproject.cinemaproject.model.bo.AccountBO;
 public class LoginActionServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoginActionServlet() {
-        super();
-    }
-
 	@Override
-	protected void doWork() throws IOException {
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Account account = new Account(username, password);
 		
 		AccountBO accountBO = new AccountBO();
-		switch (accountBO.isValidAccount(account)) {
-		case FILM_MANAGER:
-			this.saveUsernameToSession(account);
-			this.sendRedirect("jsp/filmManager.jsp");
+		int permission = accountBO.isValidAccount(account);
+		
+		if (Account.NO_PERMISSION != permission) {
+			/*save user name to session with management account*/
+			request.getSession().setAttribute("username", account.getUsername());
+			
+			/*save permission to session with management account*/
+			request.getSession().setAttribute("permission", permission);
+		}
+		
+		switch (permission) {
+		case Account.ACCOUNT_MANAGER:
 			break;
-		case ROOM_MANAGER:
+		case Account.FILM_MANAGER:
 			break;
-		case NO_PERMISSION:
-			this.sendRedirect("jsp/loginForm.jsp");
+		case Account.ROOM_MANAGER:
+			break;
+		case Account.SCHEDULE_MANAGER:
+			
+			break;
+		case Account.TICKET_MANAGER:
+			break;
+		case Account.NO_PERMISSION:
+			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 			break;
 		default:
 			break;
 		}
 	}
 	
-	private void saveUsernameToSession(Account account) {
-		this.setAttribute("username", account.getUsername());
-	}
-
 }

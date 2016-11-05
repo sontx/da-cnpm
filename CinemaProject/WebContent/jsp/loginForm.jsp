@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="../LoginAction" method="post">
+<form action="<%=request.getContextPath() %>/LoginAction" method="post">
 	Tên đăng nhập <input type="text" name="username">
 	Mật khẩu <input type="password" name="password">
 	<input type="submit" value="Đăng nhập">
