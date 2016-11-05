@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 import com.dutproject.cinemaproject.utils.Validate;
 
@@ -21,6 +21,7 @@ public class AddStaffActionServlet extends AdminFilterServlet {
 	@Override
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String code = request.getParameter("code");
 		String fullName = request.getParameter("fullName");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -33,20 +34,21 @@ public class AddStaffActionServlet extends AdminFilterServlet {
 			if (!adminBO.checkExistIdentifyCard(identityCard)) {
 				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
 				
-				Staff staff = new Staff();
-				staff.setFullName(fullName);
-				staff.setUserName(userName);
-				staff.setPassword(password);
+				AccountProfile accountProfile = new AccountProfile();
+				accountProfile.setId(code);
+				accountProfile.setFullName(fullName);
+				Account account = new Account(userName, password);
+				accountProfile.setAccount(account);
 				try {
-					staff.setBirthDay(Validate.getDateFromString(birthday));
+					accountProfile.setBirthDay(Validate.getDateFromString(birthday));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				staff.setPhoneNumber(phoneNumber);
-				staff.setIdentityCard(identityCard);
-				staff.setPermission(permission);
+				accountProfile.setPhoneNumber(phoneNumber);
+				accountProfile.setIdentityCard(identityCard);
+				accountProfile.setPermission(permission);
 				
-				adminBO.addStaff(staff);
+				adminBO.addStaff(accountProfile);
 				
 				request.setAttribute("page", "StaffsList");
 				request.setAttribute("message", "Added susscess!");

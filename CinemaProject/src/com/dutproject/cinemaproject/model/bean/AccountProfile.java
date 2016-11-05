@@ -2,23 +2,14 @@ package com.dutproject.cinemaproject.model.bean;
 
 import java.sql.Date;
 
-public class Staff {
-	private int id;
+public class AccountProfile {
+	private String id;
+	private Account account;
 	private String fullName;
-	private String userName;
-	private String password;
 	private Date birthDay;
 	private String phoneNumber;
 	private String identityCard;
 	private int permission;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getFullName() {
 		return fullName;
@@ -26,22 +17,6 @@ public class Staff {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Date getBirthDay() {
@@ -75,4 +50,21 @@ public class Staff {
 	public void setPermission(int permission) {
 		this.permission = permission;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 }

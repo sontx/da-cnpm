@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 
 @WebServlet(name = "UpdateStaffForm", urlPatterns = { "/Admin/UpdateStaffForm" })
@@ -20,7 +20,7 @@ public class UpdateStaffFormServlet extends AdminFilterServlet {
 			throws ServletException, IOException {
 		String sid = request.getParameter("id");
 		int staffId = tryParseInt(sid, -1);
-		Staff staff = adminBO.getStaff(staffId);
+		AccountProfile staff = adminBO.getStaff(staffId);
 		request.setAttribute("staff", staff);
 		request.getServletContext().getRequestDispatcher("/jsp/Admin/UpdateStaffForm.jsp").forward(request, response);
 	}

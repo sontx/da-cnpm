@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.dao.service.IAdminService;
 
 public class AdminJdbc extends JdbcService implements IAdminService {
@@ -34,7 +34,7 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 	}
 
 	@Override
-	public List<Staff> getStaffs(int offset, int count) {
+	public List<AccountProfile> getStaffs(int offset, int count) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,25 +52,25 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 	}
 
 	@Override
-	public void addStaff(Staff staff) {
+	public void addStaff(AccountProfile staff) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Staff getStaff(int staffId) {
+	public AccountProfile getStaff(int staffId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Staff getStaffByIdentifyCard(String identityCard) {
+	public AccountProfile getStaffByIdentifyCard(String identityCard) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateStaff(Staff staff) {
+	public void updateStaff(AccountProfile staff) {
 		// TODO Auto-generated method stub
 		
 	}

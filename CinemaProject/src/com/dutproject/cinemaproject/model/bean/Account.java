@@ -8,6 +8,7 @@ public class Account {
 	public static final int SCHEDULE_MANAGER = 4;
 	public static final int TICKET_MANAGER = 5;
 
+	private int id;
 	private String username;
 	private String password;
 	private int permission;
@@ -53,6 +54,14 @@ public class Account {
 		if (permission == TICKET_MANAGER)
 			return "Ticket Manager";
 		return "No Permission";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

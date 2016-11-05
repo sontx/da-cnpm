@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 
 @WebServlet(name = "StaffsList", urlPatterns = { "/Admin/StaffsList" })
@@ -21,7 +21,7 @@ public class StaffsListServlet extends AdminFilterServlet {
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
 		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
-		List<Staff> staffs = adminBO.getStaffs(pageNumber * 50, 50);
+		List<AccountProfile> staffs = adminBO.getStaffs(pageNumber * 50, 50);
 		request.setAttribute("staffs", staffs);
 		request.getRequestDispatcher("/jsp/Admin/StaffsList.jsp").forward(request, response);
 	}

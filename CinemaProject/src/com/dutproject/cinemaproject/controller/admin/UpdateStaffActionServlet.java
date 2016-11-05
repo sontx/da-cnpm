@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 import com.dutproject.cinemaproject.utils.Validate;
 
@@ -34,14 +34,13 @@ public class UpdateStaffActionServlet extends AdminFilterServlet {
 		request.setAttribute("page", "StaffsList");
 
 		if (adminBO.checkExistUserName(userName)) {
-			Staff anotherStaff = adminBO.getStaffByIdentifyCard(identityCard);
-			if (anotherStaff == null || anotherStaff.getId() != id) {
+			AccountProfile anotherStaff = adminBO.getStaffByIdentifyCard(identityCard);
+			if (anotherStaff == null || anotherStaff.getAccount().getId() != id) {
 				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
 
-				Staff staff = new Staff();
+				AccountProfile staff = new AccountProfile();
 				staff.setFullName(fullName);
-				staff.setUserName(userName);
-				staff.setPassword(password);
+				staff.setAccount(new Account(userName, password));
 				try {
 					staff.setBirthDay(Validate.getDateFromString(birthday));
 				} catch (ParseException e) {
@@ -56,7 +55,7 @@ public class UpdateStaffActionServlet extends AdminFilterServlet {
 				request.setAttribute("message", "Updated susscess!");
 				request.getServletContext().getRequestDispatcher("/jsp/Success.jsp").forward(request, response);
 			} else {
-				request.setAttribute("message", "Identity card is duplicated with " + anotherStaff.getUserName());
+				request.setAttribute("message", "Identity card is duplicated with " + anotherStaff.getAccount().getUsername());
 				request.getServletContext().getRequestDispatcher("/jsp/Error.jsp").forward(request, response);
 			}
 		} else {

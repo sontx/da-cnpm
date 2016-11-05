@@ -2,24 +2,24 @@ package com.dutproject.cinemaproject.model.dao.service;
 
 import java.util.List;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 
 public interface IAdminService {
 	int getNumberOfStaffs();
 
-	List<Staff> getStaffs(int offset, int count);
+	List<AccountProfile> getStaffs(int offset, int count);
 
 	boolean checkExistUserName(String userName);
 
 	boolean checkExistIdentifyCard(String identityCard);
 
-	void addStaff(Staff staff);
+	void addStaff(AccountProfile staff);
 
-	Staff getStaff(int staffId);
+	AccountProfile getStaff(int staffId);
 
-	Staff getStaffByIdentifyCard(String identityCard);
+	AccountProfile getStaffByIdentifyCard(String identityCard);
 
-	void updateStaff(Staff staff);
+	void updateStaff(AccountProfile staff);
 
 	void deleteStaff(int id);
 }

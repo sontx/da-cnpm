@@ -2,7 +2,7 @@ package com.dutproject.cinemaproject.model.dao;
 
 import java.util.List;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.dao.reimplemented.AdminJdbc;
 import com.dutproject.cinemaproject.model.dao.service.IAdminService;
 import com.dutproject.cinemaproject.model.dao.test.AdminTest;
@@ -17,7 +17,7 @@ public class AdminDAO implements IAdminService {
 	}
 
 	@Override
-	public List<Staff> getStaffs(int offset, int count) {
+	public List<AccountProfile> getStaffs(int offset, int count) {
 		return underlyingService.getStaffs(offset, count);
 	}
 	
@@ -30,19 +30,19 @@ public class AdminDAO implements IAdminService {
 		return underlyingService.checkExistIdentifyCard(identityCard);
 	}
 
-	public void addStaff(Staff staff) {
+	public void addStaff(AccountProfile staff) {
 		underlyingService.addStaff(staff);
 	}
 
-	public Staff getStaff(int staffId) {
+	public AccountProfile getStaff(int staffId) {
 		return underlyingService.getStaff(staffId);
 	}
 
-	public Staff getStaffByIdentifyCard(String identityCard) {
+	public AccountProfile getStaffByIdentifyCard(String identityCard) {
 		return underlyingService.getStaffByIdentifyCard(identityCard);
 	}
 
-	public void updateStaff(Staff staff) {
+	public void updateStaff(AccountProfile staff) {
 		underlyingService.updateStaff(staff);
 	}
 

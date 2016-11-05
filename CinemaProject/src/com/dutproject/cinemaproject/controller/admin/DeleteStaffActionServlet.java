@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 
 @WebServlet(name = "DeleteStaffAction", urlPatterns = { "/Admin/DeleteStaffAction" })
@@ -20,7 +20,7 @@ public class DeleteStaffActionServlet extends AdminFilterServlet {
 			throws ServletException, IOException {
 		String sId = request.getParameter("id");
 		int id = tryParseInt(sId, -1);
-		Staff staff = adminBO.getStaff(id);
+		AccountProfile staff = adminBO.getStaff(id);
 		request.setAttribute("page", "StaffsList");
 		if (staff != null) {
 			adminBO.deleteStaff(id);
