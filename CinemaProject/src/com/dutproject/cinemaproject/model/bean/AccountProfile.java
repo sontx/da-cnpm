@@ -9,7 +9,6 @@ public class AccountProfile {
 	private Date birthDay;
 	private String phoneNumber;
 	private String identityCard;
-	private int permission;
 
 	public String getFullName() {
 		return fullName;
@@ -41,14 +40,6 @@ public class AccountProfile {
 
 	public void setIdentityCard(String identityCard) {
 		this.identityCard = identityCard;
-	}
-
-	public int getPermission() {
-		return permission;
-	}
-
-	public void setPermission(int permission) {
-		this.permission = permission;
 	}
 
 	public String getId() {

@@ -38,6 +38,7 @@ public class AddStaffActionServlet extends AdminFilterServlet {
 				accountProfile.setId(code);
 				accountProfile.setFullName(fullName);
 				Account account = new Account(userName, password);
+				account.setPermission(permission);
 				accountProfile.setAccount(account);
 				try {
 					accountProfile.setBirthDay(Validate.getDateFromString(birthday));
@@ -46,7 +47,6 @@ public class AddStaffActionServlet extends AdminFilterServlet {
 				}
 				accountProfile.setPhoneNumber(phoneNumber);
 				accountProfile.setIdentityCard(identityCard);
-				accountProfile.setPermission(permission);
 				
 				adminBO.addStaff(accountProfile);
 				

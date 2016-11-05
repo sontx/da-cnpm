@@ -17,7 +17,7 @@ public class LoginFormServlet extends BaseServlet {
 	@Override
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("jsp/loginForm.jsp");
+		request.getServletContext().getRequestDispatcher("/jsp/loginForm.jsp").forward(request, response);
 	}
 
 }

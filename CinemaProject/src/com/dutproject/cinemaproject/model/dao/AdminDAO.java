@@ -8,8 +8,8 @@ import com.dutproject.cinemaproject.model.dao.service.IAdminService;
 import com.dutproject.cinemaproject.model.dao.test.AdminTest;
 
 public class AdminDAO implements IAdminService {
-	// private IAdminService underlyingService = new AdminJdbc();
-	private IAdminService underlyingService = new AdminTest();
+	private IAdminService underlyingService = new AdminJdbc();
+	// private IAdminService underlyingService = new AdminTest();
 
 	@Override
 	public int getNumberOfStaffs() {
@@ -20,26 +20,13 @@ public class AdminDAO implements IAdminService {
 	public List<AccountProfile> getStaffs(int offset, int count) {
 		return underlyingService.getStaffs(offset, count);
 	}
-	
-	@Override
-	public boolean checkExistUserName(String userName) {
-		return underlyingService.checkExistUserName(userName);
-	}
-
-	public boolean checkExistIdentifyCard(String identityCard) {
-		return underlyingService.checkExistIdentifyCard(identityCard);
-	}
 
 	public void addStaff(AccountProfile staff) {
 		underlyingService.addStaff(staff);
 	}
 
-	public AccountProfile getStaff(int staffId) {
-		return underlyingService.getStaff(staffId);
-	}
-
-	public AccountProfile getStaffByIdentifyCard(String identityCard) {
-		return underlyingService.getStaffByIdentifyCard(identityCard);
+	public AccountProfile getStaffById(int staffId) {
+		return underlyingService.getStaffById(staffId);
 	}
 
 	public void updateStaff(AccountProfile staff) {
@@ -48,6 +35,16 @@ public class AdminDAO implements IAdminService {
 
 	public void deleteStaff(int id) {
 		underlyingService.deleteStaff(id);
+	}
+
+	@Override
+	public AccountProfile getStaffByUserName(String userName) {
+		return underlyingService.getStaffByUserName(userName);
+	}
+
+	@Override
+	public AccountProfile getStaffByIdentityCard(String identityCard) {
+		return underlyingService.getStaffByIdentityCard(identityCard);
 	}
 
 }

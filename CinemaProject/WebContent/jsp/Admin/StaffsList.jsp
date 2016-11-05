@@ -21,7 +21,6 @@
 			<td>Id</td>
 			<td>Full Name</td>
 			<td>User Name</td>
-			<td>Password</td>
 			<td>Birthday</td>
 			<td>Phone Number</td>
 			<td>Identity Card</td>
@@ -30,13 +29,12 @@
 		</tr>
 		<%
 			for (AccountProfile staff : staffs) {
-					String type = Account.getPermissionString(staff.getPermission());
+					String type = Account.getPermissionString(staff.getAccount().getPermission());
 		%>
 		<tr>
 			<td><%=staff.getId()%></td>
 			<td><%=staff.getFullName()%></td>
 			<td><%=staff.getAccount().getUsername()%></td>
-			<td><%=staff.getAccount().getPassword()%></td>
 			<td><%=staff.getBirthDay()%></td>
 			<td><%=staff.getPhoneNumber()%></td>
 			<td><%=staff.getIdentityCard()%></td>

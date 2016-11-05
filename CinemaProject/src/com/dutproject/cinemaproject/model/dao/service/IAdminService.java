@@ -9,15 +9,13 @@ public interface IAdminService {
 
 	List<AccountProfile> getStaffs(int offset, int count);
 
-	boolean checkExistUserName(String userName);
+	AccountProfile getStaffByUserName(String userName);
 
-	boolean checkExistIdentifyCard(String identityCard);
+	AccountProfile getStaffByIdentityCard(String identityCard);
 
 	void addStaff(AccountProfile staff);
 
-	AccountProfile getStaff(int staffId);
-
-	AccountProfile getStaffByIdentifyCard(String identityCard);
+	AccountProfile getStaffById(int staffId);
 
 	void updateStaff(AccountProfile staff);
 

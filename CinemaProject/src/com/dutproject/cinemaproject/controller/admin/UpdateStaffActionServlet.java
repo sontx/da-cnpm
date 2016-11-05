@@ -28,19 +28,22 @@ public class UpdateStaffActionServlet extends AdminFilterServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String identityCard = request.getParameter("identityCard");
 		String staffType = request.getParameter("staffType");
-
-		int id = tryParseInt(sid, -1);
 		
 		request.setAttribute("page", "StaffsList");
 
 		if (adminBO.checkExistUserName(userName)) {
-			AccountProfile anotherStaff = adminBO.getStaffByIdentifyCard(identityCard);
-			if (anotherStaff == null || anotherStaff.getAccount().getId() != id) {
-				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
+			AccountProfile anotherStaff = adminBO.getStaffByIdentityCard(identityCard);
+			if (adminBO.checkExistIdentifyCard(identityCard)) {
 
+				Account account = new Account(userName, password);
+				int id = tryParseInt(sid, -1);
+				account.setId(id);
+				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
+				account.setPermission(permission);
+				
 				AccountProfile staff = new AccountProfile();
 				staff.setFullName(fullName);
-				staff.setAccount(new Account(userName, password));
+				staff.setAccount(account);
 				try {
 					staff.setBirthDay(Validate.getDateFromString(birthday));
 				} catch (ParseException e) {
@@ -48,7 +51,6 @@ public class UpdateStaffActionServlet extends AdminFilterServlet {
 				}
 				staff.setPhoneNumber(phoneNumber);
 				staff.setIdentityCard(identityCard);
-				staff.setPermission(permission);
 
 				adminBO.updateStaff(staff);
 

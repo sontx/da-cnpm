@@ -20,8 +20,8 @@ public class StaffsListServlet extends AdminFilterServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
-		List<AccountProfile> staffs = adminBO.getStaffs(pageNumber * 50, 50);
+		int pageNumber = tryParseInt(sPageNumber, 1);
+		List<AccountProfile> staffs = adminBO.getStaffs(pageNumber, 50);
 		request.setAttribute("staffs", staffs);
 		request.getRequestDispatcher("/jsp/Admin/StaffsList.jsp").forward(request, response);
 	}

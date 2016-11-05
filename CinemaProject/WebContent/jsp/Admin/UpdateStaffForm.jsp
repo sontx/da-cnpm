@@ -1,3 +1,4 @@
+<%@page import="com.dutproject.cinemaproject.model.bean.Account"%>
 <%@page import="com.dutproject.cinemaproject.model.bean.AccountProfile"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -18,7 +19,7 @@
 				<tr>
 					<td>Code:</td>
 					<td><input style="width: 100%" readonly="readonly" type="text" required="required"
-						name="code"></td>
+						name="code" value="<%=staff.getId()%>"></td>
 				</tr>
 				<tr>
 					<td>Full Name:</td>
@@ -56,16 +57,16 @@
 					<td>Type:</td>
 					<td><select style="width: 100%" name="staffType">
 							<option value="2"
-								selected="<%=staff.getPermission() == 2 ? "selected" : ""%>">Film
+								selected="<%=staff.getAccount().getPermission() == Account.FILM_MANAGER ? "selected" : ""%>">Film
 								Manager</option>
 							<option value="3"
-								selected="<%=staff.getPermission() == 3 ? "selected" : ""%>">Room
+								selected="<%=staff.getAccount().getPermission() == Account.ROOM_MANAGER ? "selected" : ""%>">Room
 								Manager</option>
 							<option value="4"
-								selected="<%=staff.getPermission() == 4 ? "selected" : ""%>">Schedule
+								selected="<%=staff.getAccount().getPermission() == Account.SCHEDULE_MANAGER ? "selected" : ""%>">Schedule
 								Manager</option>
 							<option value="5"
-								selected="<%=staff.getPermission() == 5 ? "selected" : ""%>">Ticket
+								selected="<%=staff.getAccount().getPermission() == Account.TICKET_MANAGER ? "selected" : ""%>">Ticket
 								Manager</option>
 					</select></td>
 				</tr>

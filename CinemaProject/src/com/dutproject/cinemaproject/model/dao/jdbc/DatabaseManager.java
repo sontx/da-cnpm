@@ -31,7 +31,7 @@ public final class DatabaseManager {
 
 	private DatabaseManager() {
 		try {
-			connectionProvider = new SqlServerConnectionProvider("localhost", "Cinema", "sa", "123");
+			connectionProvider = new SqlServerConnectionProvider("NOEM-PC", "Cinema", "sa", "123");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

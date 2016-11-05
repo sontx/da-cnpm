@@ -13,11 +13,11 @@ public class AdminBO {
 	}
 
 	public boolean checkExistUserName(String userName) {
-		return adminDAO.checkExistUserName(userName);
+		return adminDAO.getStaffByUserName(userName) != null;
 	}
 
 	public boolean checkExistIdentifyCard(String identityCard) {
-		return adminDAO.checkExistIdentifyCard(identityCard);
+		return adminDAO.getStaffByIdentityCard(identityCard) != null;
 	}
 
 	public void addStaff(AccountProfile staff) {
@@ -25,11 +25,7 @@ public class AdminBO {
 	}
 
 	public AccountProfile getStaff(int staffId) {
-		return adminDAO.getStaff(staffId);
-	}
-
-	public AccountProfile getStaffByIdentifyCard(String identityCard) {
-		return adminDAO.getStaffByIdentifyCard(identityCard);
+		return adminDAO.getStaffById(staffId);
 	}
 
 	public void updateStaff(AccountProfile staff) {
@@ -38,5 +34,9 @@ public class AdminBO {
 
 	public void deleteStaff(int id) {
 		adminDAO.deleteStaff(id);
+	}
+
+	public AccountProfile getStaffByIdentityCard(String identityCard) {
+		return adminDAO.getStaffByIdentityCard(identityCard);
 	}
 }
