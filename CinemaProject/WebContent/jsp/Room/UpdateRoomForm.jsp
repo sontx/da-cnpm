@@ -11,27 +11,39 @@
 <title>Rooms</title>
 </head>
 <body>
+	<%
+		Room room = (Room) request.getAttribute("room");
+	%>
 	<div align="center">
 		<form action="UpdateRoomAction" method="post">
 			<table>
 				<tr>
+					<td>Id:</td>
+					<td><input style="width: 100%" readonly="readonly" type="text"
+						required="required" name="id" value="<%=room.getId()%>"></td>
+				</tr>
+				<tr>
 					<td>Room Name:</td>
 					<td><input style="width: 100%" type="text" required="required"
-						name="roomName"></td>
+						name="roomName" value="<%=room.getRoomName()%>"></td>
 				</tr>
 				<tr>
 					<td>Rows:</td>
 					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="rows"></td>
+						required="required" maxlength="5" name="rows" value="<%=room.getRows()%>"></td>
 				</tr>
 				<tr>
 					<td>Columns:</td>
 					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="columns"></td>
+						required="required" maxlength="5" name="columns" value="<%=room.getColumns()%>"></td>
+				</tr>
+				<tr>
+					<td>Available:</td>
+					<td><input type="checkbox" style="width: 100%" name="status" <%=room.getStatus() != 0 ? "checked" : ""%>></td>
 				</tr>
 				<tr align="right">
 					<td></td>
-					<td><input type="submit" value="Add"> <input
+					<td><input type="submit" value="Update"> <input
 						type="button" value="Cancel"></td>
 				</tr>
 			</table>

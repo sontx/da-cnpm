@@ -21,4 +21,12 @@ public class RoomDAO implements IRoomService {
 		underlyingService.addRoom(room);
 	}
 
+	public Room getRoom(int id) {
+		return underlyingService.getRoom(id);
+	}
+
+	public void updateRoom(Room room) {
+		underlyingService.updateRoom(room);
+	}
+
 }

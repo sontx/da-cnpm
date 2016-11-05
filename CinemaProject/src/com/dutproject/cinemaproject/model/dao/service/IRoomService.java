@@ -11,5 +11,9 @@ public interface IRoomService {
 	Room getRoomByName(String roomName);
 
 	void addRoom(Room room);
+
+	Room getRoom(int id);
+
+	void updateRoom(Room room);
 	
 }

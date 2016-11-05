@@ -22,4 +22,12 @@ public class RoomBO {
 		roomDAO.addRoom(room);
 	}
 
+	public Room getRoom(int id) {
+		return roomDAO.getRoom(id);
+	}
+
+	public void updateRoom(Room room) {
+		roomDAO.updateRoom(room);
+	}
+
 }
