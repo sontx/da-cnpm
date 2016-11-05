@@ -46,4 +46,8 @@ public class AdminDAO implements IAdminService {
 		underlyingService.updateStaff(staff);
 	}
 
+	public void deleteStaff(int id) {
+		underlyingService.deleteStaff(id);
+	}
+
 }

@@ -110,4 +110,10 @@ public class AdminTest implements IAdminService {
 		
 	}
 
+	@Override
+	public void deleteStaff(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

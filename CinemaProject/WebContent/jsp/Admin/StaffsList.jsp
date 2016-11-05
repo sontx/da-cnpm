@@ -10,7 +10,7 @@
 <title>Staffs</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath() + "/Admin/AddForm"%>">Add...</a>
+	<a href="<%=request.getContextPath() + "/Admin/AddStaffForm"%>">Add...</a>
 	<%
 		List<Staff> staffs = (List<Staff>) request.getAttribute("staffs");
 		if (staffs != null && staffs.size() > 0) {
@@ -42,9 +42,9 @@
 			<td><%=staff.getIdentityCard()%></td>
 			<td><%=type%></td>
 			<td><a
-				href="<%=request.getContextPath() + "/Admin/EditForm?id=" + staff.getId()%>">Edit</a>
+				href="<%=request.getContextPath() + "/Admin/UpdateStaffForm?id=" + staff.getId()%>">Edit</a>
 				<a onclick="return confirm('Are you sure?')"
-				href="<%=request.getContextPath() + "/Admin/DeleteAction?id=" + staff.getId()%>">Delete</a>
+				href="<%=request.getContextPath() + "/Admin/DeleteStaffAction?id=" + staff.getId()%>">Delete</a>
 			</td>
 		</tr>
 		<%

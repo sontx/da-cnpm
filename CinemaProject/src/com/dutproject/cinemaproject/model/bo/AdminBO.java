@@ -35,4 +35,8 @@ public class AdminBO {
 	public void updateStaff(Staff staff) {
 		adminDAO.updateStaff(staff);
 	}
+
+	public void deleteStaff(int id) {
+		adminDAO.deleteStaff(id);
+	}
 }

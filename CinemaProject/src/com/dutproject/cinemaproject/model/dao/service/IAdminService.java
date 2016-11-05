@@ -20,4 +20,6 @@ public interface IAdminService {
 	Staff getStaffByIdentifyCard(String identityCard);
 
 	void updateStaff(Staff staff);
+
+	void deleteStaff(int id);
 }

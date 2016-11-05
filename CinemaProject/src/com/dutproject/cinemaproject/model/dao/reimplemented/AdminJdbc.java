@@ -75,4 +75,10 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 		
 	}
 
+	@Override
+	public void deleteStaff(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
