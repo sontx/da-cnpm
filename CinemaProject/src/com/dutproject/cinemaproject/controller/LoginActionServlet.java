@@ -23,36 +23,40 @@ public class LoginActionServlet extends BaseServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Account account = new Account(username, password);
-		
+
 		AccountBO accountBO = new AccountBO();
 		int permission = accountBO.isValidAccount(account);
-		
+
 		if (Account.NO_PERMISSION != permission) {
-			/*save user name to session with management account*/
+			/* save user name to session with management account */
 			request.getSession().setAttribute("username", account.getUsername());
-			
-			/*save permission to session with management account*/
+
+			/* save permission to session with management account */
 			request.getSession().setAttribute("permission", permission);
 		}
-		
+
+		String site = "Login";
 		switch (permission) {
 		case Account.ACCOUNT_MANAGER:
+			site = "Admin/StaffsList";
 			break;
 		case Account.FILM_MANAGER:
+			site = "film/FilmList";
 			break;
 		case Account.ROOM_MANAGER:
+			site = "Room/RoomsList";
 			break;
 		case Account.SCHEDULE_MANAGER:
-			
 			break;
 		case Account.TICKET_MANAGER:
+			site = "TicketListServlet";
 			break;
 		case Account.NO_PERMISSION:
-			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 			break;
 		default:
 			break;
 		}
+		response.sendRedirect(site);
 	}
-	
+
 }

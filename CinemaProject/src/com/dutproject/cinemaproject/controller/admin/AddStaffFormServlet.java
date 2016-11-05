@@ -7,14 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.controller.BaseServlet;
-
 @WebServlet(name = "AddStaffForm", urlPatterns = { "/Admin/AddStaffForm" })
-public class AddStaffFormServlet extends BaseServlet {
+public class AddStaffFormServlet extends AdminFilterServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/jsp/Admin/AddStaffForm.jsp").forward(request, response);;
 	}
