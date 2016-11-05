@@ -1,39 +1,25 @@
 package com.dutproject.cinemaproject.model.bo;
 
-
-
-
-
 import java.util.ArrayList;
+import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.Room;
 import com.dutproject.cinemaproject.model.dao.RoomDAO;
 
-
-
-
 public class RoomBO {
-	
+
 	RoomDAO roomDAO = new RoomDAO();
-	
-	public ArrayList<Room> getAllRoom() {
-		return roomDAO.getAllRoom();
+
+	public List<Room> getRooms(int pageNumber, int count) {
+		return roomDAO.getRooms(pageNumber, count);
 	}
-	
-	public Room getRoomTheoStt(int stt) {
-		return roomDAO.getRoomTheoStt(stt);
+
+	public boolean checkExistRoomName(String roomName) {
+		return roomDAO.getRoomByName(roomName) != null;
 	}
-	public int addRoom(Room room) {
-		return roomDAO.addRoom(room);
+
+	public void addRoom(Room room) {
+		roomDAO.addRoom(room);
 	}
-	
-	public int updateRoom(Room room) {
-		return roomDAO.updateRoom(room);
-	}
-	
-	public int deleteRoom(int maphong) {
-		return roomDAO.deleteRoom(maphong);
-	}
-	
-	
+
 }
