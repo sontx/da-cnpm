@@ -8,17 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.controller.BaseServlet;
 import com.dutproject.cinemaproject.model.bean.Staff;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 
 @WebServlet(name = "StaffsList", urlPatterns = { "/Admin/StaffsList" })
-public class StaffsListServlet extends BaseServlet {
+public class StaffsListServlet extends AdminFilterServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBO adminBO = new AdminBO();
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
 		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
