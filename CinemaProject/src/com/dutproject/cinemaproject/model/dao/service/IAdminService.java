@@ -8,4 +8,18 @@ public interface IAdminService {
 	int getNumberOfStaffs();
 
 	List<Staff> getStaffs(int offset, int count);
+
+	boolean checkExistUserName(String userName);
+
+	boolean checkExistIdentifyCard(String identityCard);
+
+	void addStaff(Staff staff);
+
+	Staff getStaff(int staffId);
+
+	Staff getStaffByIdentifyCard(String identityCard);
+
+	void updateStaff(Staff staff);
+
+	void deleteStaff(int id);
 }

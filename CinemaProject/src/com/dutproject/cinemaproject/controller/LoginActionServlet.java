@@ -25,9 +25,9 @@ public class LoginActionServlet extends BaseServlet {
 		Account account = new Account(username, password);
 		
 		AccountBO accountBO = new AccountBO();
-		Account.Permission permission = accountBO.isValidAccount(account);
+		int permission = accountBO.isValidAccount(account);
 		
-		if (Account.Permission.NO_PERMISSION != permission) {
+		if (Account.NO_PERMISSION != permission) {
 			/*save user name to session with management account*/
 			request.getSession().setAttribute("username", account.getUsername());
 			
@@ -36,18 +36,18 @@ public class LoginActionServlet extends BaseServlet {
 		}
 		
 		switch (permission) {
-		case ACCOUNT_MANAGER:
+		case Account.ACCOUNT_MANAGER:
 			break;
-		case FILM_MANAGER:
+		case Account.FILM_MANAGER:
 			break;
-		case ROOM_MANAGER:
+		case Account.ROOM_MANAGER:
 			break;
-		case SCHEDULE_MANAGER:
+		case Account.SCHEDULE_MANAGER:
 			
 			break;
-		case TICKET_MANAGER:
+		case Account.TICKET_MANAGER:
 			break;
-		case NO_PERMISSION:
+		case Account.NO_PERMISSION:
 			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 			break;
 		default:
