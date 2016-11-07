@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.Film;
-import com.dutproject.cinemaproject.model.dao.service.ManagementFilmListener;
+import com.dutproject.cinemaproject.model.dao.service.FilmListener;
 
-public class FilmServiceTest implements ManagementFilmListener {
+public class FilmServiceTest implements FilmListener {
 
 	@Override
 	public int getNumberOfFilms() {
@@ -41,10 +41,37 @@ public class FilmServiceTest implements ManagementFilmListener {
 	/* (non-Javadoc)
 	 * @see com.dutproject.cinemaproject.model.dao.service.ManagementFilmListener#addFilm(com.dutproject.cinemaproject.model.bean.Film)
 	 */
+	
 	@Override
-	public boolean addFilm(Film film) {
+	public Film getFilmByName(String name) {
 		// TODO Auto-generated method stub
-		return true;
+		return null;
+	}
+
+	
+	@Override
+	public void updateFilm(Film film) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Film getFilmById(int id) {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addFilm(Film film) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteFilm(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

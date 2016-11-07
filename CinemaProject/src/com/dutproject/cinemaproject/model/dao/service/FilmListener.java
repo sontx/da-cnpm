@@ -4,8 +4,12 @@ import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.Film;
 
-public interface ManagementFilmListener {
+public interface FilmListener {
 	int getNumberOfFilms();
 	List<Film> getFilms(int offset, int count);
-	boolean addFilm(Film film);
+	void addFilm(Film film);
+	Film getFilmByName(String name);
+	void deleteFilm(int id);
+	void updateFilm(Film film);
+	Film getFilmById(int id);
 }
