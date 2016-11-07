@@ -20,7 +20,7 @@
 			%>
 
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-					<%=request.getSession().getAttribute("username").toString()%>></a></li>
+					<%=request.getSession().getAttribute("username").toString()%></a></li>
 			<li><a href="<%=request.getContextPath() %>/Logout"><span class="glyphicon glyphicon-log-out"></span>
 					Logout</a></li>
 			<%
