@@ -1,4 +1,4 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.reimplemented;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Film;
 import com.dutproject.cinemaproject.model.dao.reimplemented.JdbcService;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IFilmService;
 
 public class FilmJdbc extends JdbcService implements IFilmService {
 

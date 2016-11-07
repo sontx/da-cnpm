@@ -1,4 +1,4 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.reimplemented;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Room;
 import com.dutproject.cinemaproject.model.dao.reimplemented.JdbcService;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IRoomService;
 
 public class RoomJdbc extends JdbcService implements IRoomService {
 

@@ -1,4 +1,4 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.reimplemented;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -9,6 +9,7 @@ import java.util.List;
 import com.dutproject.cinemaproject.controller.schedule.ScheduleManagementServlet;
 import com.dutproject.cinemaproject.model.bean.schedule.Schedule;
 import com.dutproject.cinemaproject.model.dao.reimplemented.JdbcService;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IScheduleService;
 
 public class ScheduleJdbc extends JdbcService implements IScheduleService {
 
@@ -173,6 +174,34 @@ public class ScheduleJdbc extends JdbcService implements IScheduleService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public int getScheduleId(Schedule schedule) {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call schedule_getScheduleId(?,?,?,?)}");
+			callable.setInt(1, schedule.getRoomId());
+			callable.setInt(2, schedule.getFilmId());
+			callable.setInt(3, schedule.getStartTime());
+			callable.setInt(4, schedule.getEndTime());
+			ResultSet rs = callable.executeQuery();
+			int scheduleId = 0;
+			if (rs.next()) {
+				scheduleId = rs.getInt("scheduleId");
+			}
+			rs.close();
+			return scheduleId;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return 0;
 	}
 
 }

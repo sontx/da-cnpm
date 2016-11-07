@@ -1,9 +1,10 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Film;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IFilmService;
 
 public class FilmTest implements IFilmService {
 
