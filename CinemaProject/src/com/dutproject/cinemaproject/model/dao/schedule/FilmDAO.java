@@ -5,7 +5,8 @@ import java.util.List;
 import com.dutproject.cinemaproject.model.bean.schedule.Film;
 
 public class FilmDAO implements IFilmService {
-	IFilmService filmService = new FilmTest();
+//	IFilmService filmService = new FilmTest();
+	private IFilmService filmService = new FilmJdbc();
 
 	@Override
 	public Film getFilmById(int filmId) {

@@ -5,7 +5,8 @@ import java.util.List;
 import com.dutproject.cinemaproject.model.bean.schedule.Room;
 
 public class RoomDAO implements IRoomService {
-	IRoomService roomService = new RoomTest();
+//	IRoomService roomService = new RoomTest();
+	private IRoomService roomService = new RoomJdbc();
 
 	@Override
 	public Room getRoomById(int roomId) {

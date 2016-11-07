@@ -20,6 +20,15 @@
 function showNotification() {
 	
 }
+
+function submitWhenEnter() {
+	if (event.keyCode == 13) {
+	    var pageNumber = document.getElementById("pageNumber").value;
+	    var url = "<%=request.getContextPath() %>/ScheduleManagement?pageNumber=" + pageNumber;
+	    window.location = url;
+		return false;
+	}
+}
 </script>
 
 <jsp:include page="/jsp/navbar.jsp"></jsp:include>
@@ -83,7 +92,8 @@ if (nextPageNumber > maxPageNumber) {
 }
 %>
 <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=previousPageNumber %>">&lt;Trước</a>
-<input type="text" value="<%=pageNumber %>" size="1">/<%=maxPageNumber %>
+<input id="pageNumber" type="text" name="pageNumber" value="<%=pageNumber %>" size="1" onkeydown="submitWhenEnter();">
+/<%=maxPageNumber %>
 <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=nextPageNumber %>">Sau&gt;</a>
 
 </body>
