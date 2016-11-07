@@ -18,7 +18,7 @@ public class LogoutServlet extends BaseServlet {
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().invalidate();
-		response.sendRedirect("jsp/loginForm.jsp");
+		response.sendRedirect("Login");
 	}
 
 }
