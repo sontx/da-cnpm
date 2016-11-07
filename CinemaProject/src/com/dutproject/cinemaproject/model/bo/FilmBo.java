@@ -6,27 +6,27 @@ import com.dutproject.cinemaproject.model.bean.Film;
 import com.dutproject.cinemaproject.model.dao.FilmDao;
 
 public class FilmBo {
-	private static FilmBo mFilmBo = new FilmBo();
-	private FilmDao filmDao;
+	private static FilmBo sFilmBo = new FilmBo();
+	private FilmDao mFilmDao;
 	public static FilmBo getInstance(){
-		return mFilmBo;
+		return sFilmBo;
 	}
 	private FilmBo(){
-		filmDao = new FilmDao();
+		mFilmDao = new FilmDao();
 	}
 	
 	public int getNumberOfFilms() {
 		// TODO Auto-generated method stub
-		return filmDao.getNumberOfFilms();
+		return mFilmDao.getNumberOfFilms();
 	}
 
 	public List<Film> getFilms(int offset, int count) {
 		// TODO Auto-generated method stub
-		return filmDao.getFilms(1, 100);
+		return mFilmDao.getFilms(offset, count);
 	}
 	
 	public boolean addFilm(Film film){
-		return filmDao.addFilm(film);
+		return mFilmDao.addFilm(film);
 	}
 
 }

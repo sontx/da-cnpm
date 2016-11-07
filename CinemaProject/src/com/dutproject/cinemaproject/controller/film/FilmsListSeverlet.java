@@ -18,7 +18,7 @@ import com.dutproject.cinemaproject.model.bo.FilmBo;
 /**
  * @author HoVanLy
  *
- *         Oct 23, 2016
+ * Oct 23, 2016
  */
 @WebServlet(name = "FilmsList", urlPatterns = { "/film/FilmList" })
 public class FilmsListSeverlet extends BaseServlet {
