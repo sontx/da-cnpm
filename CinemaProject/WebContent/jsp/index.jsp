@@ -72,7 +72,7 @@
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li><a href="loginForm.jsp"><i
+					<li><a href="index.jsp"><i
 							class="glyphicon glyphicon-home"></i> Trang chủ</a></li>
 					<li class="active"><a href="index.html" id="dropdownMenu1"
 						data-toggle="dropdown"><i class="fa fa-fw fa-dashboard"></i>
@@ -86,7 +86,7 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="#">Tình trạng vé</a></li>
 						</ul></li>
-					<li class="active"><a href="index.html" id="dropdownMenu1"
+					<li class="active"><a href="" id="dropdownMenu1"
 						data-toggle="dropdown"><i class="glyphicon glyphicon-film"></i>
 							Quản lý phim<span class="caret"></span></a>
 
@@ -149,14 +149,39 @@
 			<!-- /.navbar-collapse -->
 		</nav>
 
-		<div id="page-wrapper">
-			<form action="../LoginAction" method="post">
-				Tên đăng nhập <input type="text" name="username"><br>
-				Mật khẩu <input type="password" name="password"> 
-				<input type="submit" class="btn btn-primary" value="Đăng nhập">
-			</form>
-
-		</div>
+	<div align="center">
+		<form action="AddFilmAction" method="post">
+			<table>
+				<tr>
+					<td>Full Name:</td>
+					<td><input style="width: 100%" type="text" required="required"
+						name="name"></td>
+				</tr>
+				<tr>
+					<td>Duration</td>
+					<td><input style="width: 100%" type="number"
+						required="required" name="duration"></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><input style="width: 100%" required="required"
+						name="description"></td>
+				</tr>
+				<tr>
+					<td>Old Limited</td>
+					<td><select style="width: 100%" name="oldLimited">
+							<option value="2">16+</option>
+							<option value="3">18+</option>
+					</select></td>
+				</tr>
+				<tr align="right">
+					<td></td>
+					<td><input type="submit" value="Add"> <input
+						type="button" value="Cancel"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 		<!-- /#page-wrapper -->
 
 	</div>
