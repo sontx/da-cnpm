@@ -20,19 +20,23 @@
 	<center>
 		<table border="1">
 			<tr>
-				<td>Id</td>
+				<td>Schedule ID</td>
 				<td>Name of movie</td>
-				<td>Schedule</td>
+				<td>Room ID</td>
+				<td>Start Time</td>
+				<td>End Time</td>
 				<td>List of tickets</td>
 			</tr>
 			<%
 				for (Movie movie : movies) {
 			%>
 			<tr>
-				<td><%=movie.getId()%></td>
-				<td><%=movie.getNameOfMovie()%></td>
-				<td><%=movie.getSchedule()%></td>
-				<td><a href="TicketListServlet?id=<%=movie.getId()%>">view</a></td>
+				<td><%=movie.getScheduleId()%></td>
+				<td><%=movie.getFilmName()%></td>
+				<td><%=movie.getRoomId()%></td>
+				<td><%=movie.getStartTime()%></td>
+				<td><%=movie.getEndTime()%></td>
+				<td><a href="TicketListServlet?id=<%=movie.getScheduleId()%>">view</a></td>
 			</tr>
 			<%
 				}

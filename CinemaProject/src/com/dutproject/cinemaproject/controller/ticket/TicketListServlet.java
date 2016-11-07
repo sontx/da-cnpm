@@ -50,15 +50,13 @@ public class TicketListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
+		int pageNumber = tryParseInt(sPageNumber, 1);
 		String idMovie = request.getParameter("id");
 		int id = Integer.parseInt(idMovie);
 
-		List<Ticket> tickets = ticketBO.getTickets(pageNumber * 50, 50);
-		String nameOfMovie = ticketBO.getNameOfMovie(id);
-		request.setAttribute("nameOfMovie", nameOfMovie);
+		List<Ticket> tickets = ticketBO.getTickets(pageNumber, 50, id);
 		request.setAttribute("tickets", tickets);
-		request.getRequestDispatcher("jsp/Ticket/TicketsList.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/Ticket/TicketsList.jsp").forward(request, response);
 
 	}
 

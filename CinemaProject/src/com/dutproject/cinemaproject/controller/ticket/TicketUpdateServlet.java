@@ -29,7 +29,7 @@ public class TicketUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int ticketId = Integer.parseInt(request.getParameter("id"));
+		int ticketId = Integer.parseInt(request.getParameter("ticketId"));
 		String ticketState = request.getParameter("state");
 		if (ticketState.equals("available")) {
 			ticketBO.updateTicketState(ticketId, "booked");

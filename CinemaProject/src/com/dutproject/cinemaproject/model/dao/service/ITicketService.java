@@ -8,15 +8,11 @@ import com.dutproject.cinemaproject.model.bean.Ticket;
 public interface ITicketService {
 	int getNumberOfTickets();
 
-	List<Ticket> getTickets(int offset, int count);
+	List<Ticket> getTickets(int offset, int count, int scheduleId);
 	
 	void updateTicketState(Ticket ticket);
-
-	void updateTicketState(int id, String state);
 	
 	List <Movie> getMovies (int offset, int count);
-	
-	int getNumberOfMovies();
 
-	String getNameOfMovie(int id);
+	String getSchedule(int id);
 }

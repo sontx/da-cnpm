@@ -42,11 +42,11 @@ public class MovieListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
+		int pageNumber = tryParseInt(sPageNumber, 1);
 
-		List<Movie> movies = ticketBO.getMovies(pageNumber * 50, 50);
+		List<Movie> movies = ticketBO.getMovies(pageNumber, 50);
 		request.setAttribute("movies", movies);
-		request.getRequestDispatcher("/jsp/Ticket/MoviesList.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/Ticket/ScheduleList.jsp").forward(request, response);
 	}
 
 	/**
