@@ -4,163 +4,66 @@
 <html lang="en">
 
 <head>
-
+<title>Cinema Management</title>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Quản lý rạp chiếu phim</title>
-
-<!-- Bootstrap Core CSS -->
-<link
-	href="<%=request.getContextPath()%>/jsp/Resources/startbootstrap-sb-admin-gh-pages/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom CSS -->
-<link
-	href="<%=request.getContextPath()%>/jsp/Resources/startbootstrap-sb-admin-gh-pages/css/sb-admin.css"
-	rel="stylesheet">
-
-<!-- Morris Charts CSS -->
-<link
-	href="<%=request.getContextPath()%>/jsp/Resources/startbootstrap-sb-admin-gh-pages/css/plugins/morris.css"
-	rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link
-	href="<%=request.getContextPath()%>/jsp/Resources/startbootstrap-sb-admin-gh-pages/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <body>
+	<jsp:include page="navbar.jsp"></jsp:include>
 
-	<div id="wrapper">
+	<div class="container">
+		<div id="loginbox" style="margin-top: 50px;"
+			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Sign In</div>
+				</div>
 
-		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">Quản lý rạp chiếu phim</a>
+				<div style="padding-top: 30px" class="panel-body">
+
+					<div style="display: none" id="login-alert"
+						class="alert alert-danger col-sm-12"></div>
+
+					<form id="loginform" class="form-horizontal" role="form"
+						action="./LoginAction" method="post">
+
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input id="login-username"
+								type="text" class="form-control" name="username" value=""
+								placeholder="username">
+						</div>
+
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input id="login-password"
+								type="password" class="form-control" name="password"
+								placeholder="password">
+						</div>
+
+						<div style="margin-top: 10px" class="form-group">
+							<!-- Button -->
+
+							<div class="col-sm-12 controls">
+								<input type="submit" id="btn-login" class="btn btn-success"
+									value="Login" />
+							</div>
+						</div>
+					</form>
+
+
+
+				</div>
 			</div>
-			<!-- Top Menu Items -->
-			<ul class="nav navbar-right top-nav">
-
-
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-user"></i> Tran Xuan Son
-						<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-						</li>
-						<li><a href="#"><i class="fa fa-fw fa-envelope"></i>
-								Inbox</a></li>
-						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log
-								Out</a></li>
-					</ul></li>
-			</ul>
-			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav side-nav">
-					<li><a href="loginForm.jsp"><i
-							class="glyphicon glyphicon-home"></i> Trang chủ</a></li>
-					<li class="active"><a href="index.html" id="dropdownMenu1"
-						data-toggle="dropdown"><i class="fa fa-fw fa-dashboard"></i>
-							Quản lý vé<span class="caret"></span></a>
-
-
-						<ul class="dropdown-menu" role="menu"
-							aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Danh sách vé</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Tình trạng vé</a></li>
-						</ul></li>
-					<li class="active"><a href="index.html" id="dropdownMenu1"
-						data-toggle="dropdown"><i class="glyphicon glyphicon-film"></i>
-							Quản lý phim<span class="caret"></span></a>
-
-
-						<ul class="dropdown-menu" role="menu"
-							aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Danh sách phim</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Thêm phim </a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Cập nhật phim</a></li>
-
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Xóa phim</a></li>
-
-						</ul></li>
-					<li class="active"><a href="index.html" id="dropdownMenu1"
-						data-toggle="dropdown"><i class="glyphicon glyphicon-list-alt"></i>
-							Quản lý lịch chiếu<span class="caret"></span></a>
-
-
-						<ul class="dropdown-menu" role="menu"
-							aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Danh sách lịch chiếu</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Thêm lịch chiếu</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Cập nhật lịch chiếu</a></li>
-
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Xóa lịch chiếu</a></li>
-
-						</ul></li>
-					<li class="active"><a href="index.html" id="dropdownMenu1"
-						data-toggle="dropdown"><i class="glyphicon glyphicon-th-large"></i>
-							Quản lý phòng chiếu<span class="caret"></span></a>
-
-
-						<ul class="dropdown-menu" role="menu"
-							aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Danh sách phòng chiếu</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Thêm phòng chiếu</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Cập nhật phòng chiếu</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="#">Xóa phòng chiếu</a></li>
-
-						</ul></li>
-					<li><a href="bootstrap-elements.html"><i
-							class="glyphicon glyphicon-user"></i> Quản lý nhân sự </a></li>
-					<li><a href="bootstrap-elements.html"><i
-							class="glyphicon glyphicon-earphone"></i> Liên hệ </a></li>
-
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</nav>
-
-		<div id="page-wrapper">
-			<form action="../LoginAction" method="post">
-				Tên đăng nhập <input type="text" name="username"><br>
-				Mật khẩu <input type="password" name="password"> 
-				<input type="submit" class="btn btn-primary" value="Đăng nhập">
-			</form>
-
 		</div>
-		<!-- /#page-wrapper -->
-
 	</div>
-	<!-- /#wrapper -->
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
