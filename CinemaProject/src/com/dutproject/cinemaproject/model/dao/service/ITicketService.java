@@ -10,7 +10,7 @@ public interface ITicketService {
 
 	List<Ticket> getTickets(int offset, int count, int scheduleId);
 	
-	void updateTicketState(Ticket ticket);
+	void updateTicketState(int ticketId, String string);
 	
 	List <Movie> getMovies (int offset, int count);
 

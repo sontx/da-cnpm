@@ -22,7 +22,7 @@ public class TicketBO {
 	}
 
 	public void updateTicketState(int ticketId, String string) {
-		// TODO Auto-generated method stub
+		ticketDAO.updateTicketState(ticketId, string);
 		
 	}
 

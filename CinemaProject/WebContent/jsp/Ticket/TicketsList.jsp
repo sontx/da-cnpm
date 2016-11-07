@@ -14,9 +14,6 @@
 </center>
 
 <body>
-	<center>
-		<h2><%=request.getAttribute("id")%></h2>
-	</center>
 	<%
 		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
 		if (tickets.size() > 0) {
@@ -39,7 +36,7 @@
 				<td><%=ticket.getChairId()%></td>
 				<td><%=ticket.getPrice()%></td>
 				<td><a
-					href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>"><%=ticket.getState()%></a></td>
+					href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"><%=ticket.getState()%></a></td>
 
 			</tr>
 			<%

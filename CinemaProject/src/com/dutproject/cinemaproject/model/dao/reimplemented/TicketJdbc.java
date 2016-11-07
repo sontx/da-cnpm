@@ -73,11 +73,12 @@ public class TicketJdbc extends JdbcService implements ITicketService {
 	}
 
 	@Override
-	public void updateTicketState(Ticket ticket) {
+	public void updateTicketState(int ticketId, String string) {
 		CallableStatement callable = null;
 		try {
 			callable = connection.prepareCall("{call ticket_updateTicket(?,?)}");
-			callable.setString("state", ticket.getState());
+			callable.setInt(1, ticketId);
+			callable.setString(2, string);
 			callable.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -23,9 +23,8 @@ public class TicketDAO implements ITicketService {
 	}
 
 	@Override
-	public void updateTicketState(Ticket ticket) {
-		// TODO Auto-generated method stub
-
+	public void updateTicketState(int ticketId, String string) {
+		underlyingService.updateTicketState(ticketId, string);
 	}
 
 	@Override
