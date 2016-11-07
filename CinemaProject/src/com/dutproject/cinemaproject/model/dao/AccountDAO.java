@@ -1,16 +1,17 @@
 package com.dutproject.cinemaproject.model.dao;
 
 import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.Account.Permission;
 
 public class AccountDAO {
 
-	public Account.Permission isValidAccount(Account account) {
+	public int isValidAccount(Account account) {
 		if ("admin1".equals(account.getUsername())) {
-			return Permission.FILM_MANAGER;
+			return Account.ACCOUNT_MANAGER;
 		} else if ("admin2".equals(account.getUsername())) {
-			return Permission.SCHEDULE_MANAGER;
+			return Account.SCHEDULE_MANAGER;
+		} else if ("admin3".equals(account.getUsername())) {
+			return Account.ROOM_MANAGER;
 		}
-		return Permission.NO_PERMISSION;
+		return Account.NO_PERMISSION;
 	}
 }

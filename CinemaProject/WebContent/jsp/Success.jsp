@@ -4,14 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Error</title>
+<title>Success</title>
 </head>
 <body>
 	<h3>
 		<%=request.getAttribute("message")%>
 	</h3>
+	<%
+		if (request.getAttribute("page") != null) {
+	%>
 	<h5>
 		<a href="<%=request.getAttribute("page")%>">OK</a>
 	</h5>
+	<%
+		}
+	%>
 </body>
 </html>

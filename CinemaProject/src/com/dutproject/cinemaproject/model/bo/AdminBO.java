@@ -2,41 +2,41 @@ package com.dutproject.cinemaproject.model.bo;
 
 import java.util.List;
 
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.dao.AdminDAO;
 
 public class AdminBO {
 	private AdminDAO adminDAO = new AdminDAO();
 
-	public List<Staff> getStaffs(int offset, int count) {
+	public List<AccountProfile> getStaffs(int offset, int count) {
 		return adminDAO.getStaffs(offset, count);
 	}
 
 	public boolean checkExistUserName(String userName) {
-		return adminDAO.checkExistUserName(userName);
+		return adminDAO.getStaffByUserName(userName) != null;
 	}
 
 	public boolean checkExistIdentifyCard(String identityCard) {
-		return adminDAO.checkExistIdentifyCard(identityCard);
+		return adminDAO.getStaffByIdentityCard(identityCard) != null;
 	}
 
-	public void addStaff(Staff staff) {
+	public void addStaff(AccountProfile staff) {
 		adminDAO.addStaff(staff);
 	}
 
-	public Staff getStaff(int staffId) {
-		return adminDAO.getStaff(staffId);
+	public AccountProfile getStaff(int staffId) {
+		return adminDAO.getStaffById(staffId);
 	}
 
-	public Staff getStaffByIdentifyCard(String identityCard) {
-		return adminDAO.getStaffByIdentifyCard(identityCard);
-	}
-
-	public void updateStaff(Staff staff) {
+	public void updateStaff(AccountProfile staff) {
 		adminDAO.updateStaff(staff);
 	}
 
 	public void deleteStaff(int id) {
 		adminDAO.deleteStaff(id);
+	}
+
+	public AccountProfile getStaffByIdentityCard(String identityCard) {
+		return adminDAO.getStaffByIdentityCard(identityCard);
 	}
 }

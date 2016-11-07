@@ -12,6 +12,11 @@
 		<form action="AddStaffAction" method="post">
 			<table>
 				<tr>
+					<td>Code:</td>
+					<td><input style="width: 100%" type="text" required="required"
+						name="code"></td>
+				</tr>
+				<tr>
 					<td>Full Name:</td>
 					<td><input style="width: 100%" type="text" required="required"
 						name="fullName"></td>

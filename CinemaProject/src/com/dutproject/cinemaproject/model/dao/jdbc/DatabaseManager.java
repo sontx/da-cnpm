@@ -31,7 +31,7 @@ public final class DatabaseManager {
 
 	private DatabaseManager() {
 		try {
-			connectionProvider = new MySqlConnectionProvider("localhost", "coffee360", "root", "");
+			connectionProvider = new SqlServerConnectionProvider("NOEM-PC", "Cinema", "sa", "123");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

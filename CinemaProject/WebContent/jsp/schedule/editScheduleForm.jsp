@@ -57,7 +57,7 @@ Schedule schedule = (Schedule) request.getAttribute("schedule");
 	Thời gian chiếu:<br>
 	Ngày: <input type="text" name="date" value="<%=Converter.toStringOnlyDate(startTime) %>"><br>
 	Bắt đầu: <input type="text" name="startTime" value="<%=Converter.toStringOnlyTime(startTime) %>"><br>
-	Kết thúc: <input type="text" name="endTime" value="<%=Converter.toStringOnlyTime(startTime) %>">
+	Kết thúc: <input type="text" name="endTime" value="<%=Converter.toStringOnlyTime(endTime) %>">
 	<br>
 	<input type="submit" value="Cập nhật"> <a href="<%=request.getContextPath() %>/ScheduleManagement">Hủy</a>
 </form>

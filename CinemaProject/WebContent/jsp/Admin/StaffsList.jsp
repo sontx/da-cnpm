@@ -1,5 +1,5 @@
 <%@page import="com.dutproject.cinemaproject.model.bean.Account"%>
-<%@page import="com.dutproject.cinemaproject.model.bean.Staff"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.AccountProfile"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 <body>
 	<a href="<%=request.getContextPath() + "/Admin/AddStaffForm"%>">Add...</a>
 	<%
-		List<Staff> staffs = (List<Staff>) request.getAttribute("staffs");
+		List<AccountProfile> staffs = (List<AccountProfile>) request.getAttribute("staffs");
 		if (staffs != null && staffs.size() > 0) {
 	%>
 	<center>
@@ -21,7 +21,6 @@
 			<td>Id</td>
 			<td>Full Name</td>
 			<td>User Name</td>
-			<td>Password</td>
 			<td>Birthday</td>
 			<td>Phone Number</td>
 			<td>Identity Card</td>
@@ -29,22 +28,21 @@
 			<td></td>
 		</tr>
 		<%
-			for (Staff staff : staffs) {
-					String type = Account.getPermissionString(staff.getPermission());
+			for (AccountProfile staff : staffs) {
+					String type = Account.getPermissionString(staff.getAccount().getPermission());
 		%>
 		<tr>
 			<td><%=staff.getId()%></td>
 			<td><%=staff.getFullName()%></td>
-			<td><%=staff.getUserName()%></td>
-			<td><%=staff.getPassword()%></td>
+			<td><%=staff.getAccount().getUsername()%></td>
 			<td><%=staff.getBirthDay()%></td>
 			<td><%=staff.getPhoneNumber()%></td>
 			<td><%=staff.getIdentityCard()%></td>
 			<td><%=type%></td>
 			<td><a
-				href="<%=request.getContextPath() + "/Admin/UpdateStaffForm?id=" + staff.getId()%>">Edit</a>
+				href="<%=request.getContextPath() + "/Admin/UpdateStaffForm?id=" + staff.getAccount().getId()%>">Edit</a>
 				<a onclick="return confirm('Are you sure?')"
-				href="<%=request.getContextPath() + "/Admin/DeleteStaffAction?id=" + staff.getId()%>">Delete</a>
+				href="<%=request.getContextPath() + "/Admin/DeleteStaffAction?id=" + staff.getAccount().getId()%>">Delete</a>
 			</td>
 		</tr>
 		<%

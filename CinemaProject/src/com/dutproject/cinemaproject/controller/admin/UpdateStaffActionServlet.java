@@ -7,20 +7,18 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.dutproject.cinemaproject.controller.BaseServlet;
 import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 import com.dutproject.cinemaproject.utils.Validate;
 
 @WebServlet(name = "UpdateStaffAction", urlPatterns = { "/Admin/UpdateStaffAction" })
-public class UpdateStaffActionServlet extends BaseServlet {
+public class UpdateStaffActionServlet extends AdminFilterServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBO adminBO = new AdminBO();
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sid = request.getParameter("id");
 		String fullName = request.getParameter("fullName");
@@ -30,18 +28,22 @@ public class UpdateStaffActionServlet extends BaseServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String identityCard = request.getParameter("identityCard");
 		String staffType = request.getParameter("staffType");
-
-		int id = tryParseInt(sid, -1);
+		
+		request.setAttribute("page", "StaffsList");
 
 		if (adminBO.checkExistUserName(userName)) {
-			Staff anotherStaff = adminBO.getStaffByIdentifyCard(identityCard);
-			if (anotherStaff == null || anotherStaff.getId() != id) {
-				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
+			AccountProfile anotherStaff = adminBO.getStaffByIdentityCard(identityCard);
+			if (adminBO.checkExistIdentifyCard(identityCard)) {
 
-				Staff staff = new Staff();
+				Account account = new Account(userName, password);
+				int id = tryParseInt(sid, -1);
+				account.setId(id);
+				int permission = tryParseInt(staffType, Account.NO_PERMISSION);
+				account.setPermission(permission);
+				
+				AccountProfile staff = new AccountProfile();
 				staff.setFullName(fullName);
-				staff.setUserName(userName);
-				staff.setPassword(password);
+				staff.setAccount(account);
 				try {
 					staff.setBirthDay(Validate.getDateFromString(birthday));
 				} catch (ParseException e) {
@@ -49,14 +51,13 @@ public class UpdateStaffActionServlet extends BaseServlet {
 				}
 				staff.setPhoneNumber(phoneNumber);
 				staff.setIdentityCard(identityCard);
-				staff.setPermission(permission);
 
 				adminBO.updateStaff(staff);
 
 				request.setAttribute("message", "Updated susscess!");
 				request.getServletContext().getRequestDispatcher("/jsp/Success.jsp").forward(request, response);
 			} else {
-				request.setAttribute("message", "Identity card is duplicated with " + anotherStaff.getUserName());
+				request.setAttribute("message", "Identity card is duplicated with " + anotherStaff.getAccount().getUsername());
 				request.getServletContext().getRequestDispatcher("/jsp/Error.jsp").forward(request, response);
 			}
 		} else {

@@ -2,47 +2,52 @@ package com.dutproject.cinemaproject.model.bean;
 
 public class Room {
 	private int id;
-	private int stt;
-	private String maPhong;
-	private String tenPhong;
-	private int soHang;
-	private int soCot;
+	private String roomName;
+	private int rows;
+	private int columns;
+	private int status;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getStt() {
-		return stt;
-	}
-	public void setStt(int stt) {
-		this.stt = stt;
-	}
-	public String getMaPhong() {
-		return maPhong;
-	}
-	public void setMaPhong(String maPhong) {
-		this.maPhong = maPhong;
-	}
-	public String getTenPhong() {
-		return tenPhong;
-	}
-	public void setTenPhong(String tenPhong) {
-		this.tenPhong = tenPhong;
-	}
-	public int getSoHang() {
-		return soHang;
-	}
-	public void setSoHang(int soHang) {
-		this.soHang = soHang;
-	}
-	public int getSoCot() {
-		return soCot;
-	}
-	public void setSoCot(int soCot) {
-		this.soCot = soCot;
+
+	public String getRoomName() {
+		return roomName;
 	}
 
-	
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+
+	public void setColumns(int columns) {
+		this.columns = columns;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public static String getStatusString(int status) {
+		return status != 0 ? "Unavailable" : "Available";
+	}
+}

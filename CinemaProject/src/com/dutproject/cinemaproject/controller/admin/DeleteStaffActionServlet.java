@@ -7,21 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dutproject.cinemaproject.controller.BaseServlet;
-import com.dutproject.cinemaproject.model.bean.Staff;
+import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bo.AdminBO;
 
 @WebServlet(name = "DeleteStaffAction", urlPatterns = { "/Admin/DeleteStaffAction" })
-public class DeleteStaffActionServlet extends BaseServlet {
+public class DeleteStaffActionServlet extends AdminFilterServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBO adminBO = new AdminBO();
 	
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sId = request.getParameter("id");
 		int id = tryParseInt(sId, -1);
-		Staff staff = adminBO.getStaff(id);
+		AccountProfile staff = adminBO.getStaff(id);
 		request.setAttribute("page", "StaffsList");
 		if (staff != null) {
 			adminBO.deleteStaff(id);
