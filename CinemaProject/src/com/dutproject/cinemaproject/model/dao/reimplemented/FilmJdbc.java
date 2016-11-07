@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.Film;
-import com.dutproject.cinemaproject.model.dao.service.ManagementFilmListener;
+import com.dutproject.cinemaproject.model.dao.service.FilmListener;
 
-public class FilmJdbc extends JdbcService implements  ManagementFilmListener  {
+public class FilmJdbc extends JdbcService implements  FilmListener  {
 
 	@Override
 	public int getNumberOfFilms() {
@@ -49,13 +49,95 @@ public class FilmJdbc extends JdbcService implements  ManagementFilmListener  {
 		return films;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.dutproject.cinemaproject.model.dao.service.ManagementFilmListener#addFilm(com.dutproject.cinemaproject.model.bean.Film)
-	 */
 	@Override
-	public boolean addFilm(Film film) {
+	public void addFilm(Film film) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
+
+	@Override
+	public Film getFilmByName(String name) {
+		CallableStatement callable = null;
+		Film film = new Film();
+		try {
+			callable = connection.prepareCall("{call film_getFilmByName(?)}");
+			callable.setString(1, name);
+			ResultSet resultSet = callable.executeQuery();
+			if (resultSet.next()) {
+				film.setFilmId(resultSet.getInt("filmId"));
+				film.setFilmName(resultSet.getString("filmName"));
+				film.setAgeLimithed(resultSet.getInt("ageLimited"));
+				film.setDescription(resultSet.getString("description"));
+				film.setLength(resultSet.getInt("length"));
+			}
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return film;
+	}
+
+	@Override
+	public void deleteFilm(int id) {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call film_deleteFilm(?)}");
+			callable.setInt(1, id);
+			callable.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updateFilm(Film film) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Film getFilmById(int id) {
+		CallableStatement callable = null;
+		Film film = new Film();
+		try {
+			callable = connection.prepareCall("{call film_getFilmById(?)}");
+			callable.setInt(1, id);
+			ResultSet resultSet = callable.executeQuery();
+			if (resultSet.next()) {
+				film.setFilmId(resultSet.getInt("filmId"));
+				film.setFilmName(resultSet.getString("filmName"));
+				film.setAgeLimithed(resultSet.getInt("ageLimited"));
+				film.setDescription(resultSet.getString("description"));
+				film.setLength(resultSet.getInt("length"));
+			}
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return film;
+	}
+
+	
 
 }
