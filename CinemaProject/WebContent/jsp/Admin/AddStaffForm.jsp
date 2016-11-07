@@ -29,7 +29,7 @@
 					<label class="col-md-4 control-label" for="code">Code</label>
 					<div class="col-md-4">
 						<input id="code" name="code" type="text" placeholder="NV1"
-							class="form-control input-md" required="">
+							class="form-control input-md" required="required">
 
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 					<div class="col-md-4">
 						<input id="fullName" name="fullName" type="text"
 							placeholder="Tran xuan son" class="form-control input-md"
-							required="">
+							required="required">
 
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 					<label class="col-md-4 control-label" for="username">Username</label>
 					<div class="col-md-4">
 						<input id="username" name="userName" type="text"
-							placeholder="sontx" class="form-control input-md" required="">
+							placeholder="sontx" class="form-control input-md" required="required">
 
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 					<div class="col-md-4">
 						<input id="password" name="password" type="password"
 							placeholder="secret password" class="form-control input-md"
-							required="">
+							required="required">
 
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 					<div class="col-md-4">
 						<input id="birthday" name="birthday" type="date"
 							placeholder="03/03/1994" class="form-control input-md"
-							required="">
+							required="required">
 
 					</div>
 				</div>
@@ -85,7 +85,7 @@
 					<div class="col-md-4">
 						<input id="phoneNumber" name="phoneNumber" type="number"
 							maxlength="11" placeholder="01647891437"
-							class="form-control input-md" required="">
+							class="form-control input-md" required="required">
 
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 					<div class="col-md-4">
 						<input id="identityCard" name="identityCard" type="number"
 							maxlength="9" placeholder="241442636"
-							class="form-control input-md" required="">
+							class="form-control input-md" required="required">
 
 					</div>
 				</div>
