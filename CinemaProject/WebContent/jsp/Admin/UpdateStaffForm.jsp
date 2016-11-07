@@ -26,7 +26,7 @@
 				<input type="hidden" name="id"
 					value="<%=staff.getAccount().getId()%>">
 				<!-- Form Name -->
-				<legend>Add Staff</legend>
+				<legend>Update Staff</legend>
 
 					<!-- Text input-->
 				<div class="form-group">
