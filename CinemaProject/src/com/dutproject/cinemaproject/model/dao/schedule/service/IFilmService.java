@@ -1,4 +1,4 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.service;
 
 import java.util.List;
 

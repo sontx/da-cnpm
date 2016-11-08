@@ -1,9 +1,10 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Room;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IRoomService;
 
 public class RoomTest implements IRoomService {
 	

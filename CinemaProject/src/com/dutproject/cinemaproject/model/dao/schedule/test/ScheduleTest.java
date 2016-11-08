@@ -1,10 +1,11 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Schedule;
+import com.dutproject.cinemaproject.model.dao.schedule.service.IScheduleService;
 import com.dutproject.cinemaproject.utils.schedule.Converter;
 
 public class ScheduleTest implements IScheduleService {
@@ -75,6 +76,12 @@ public class ScheduleTest implements IScheduleService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public int getScheduleId(Schedule schedule) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
