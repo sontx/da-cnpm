@@ -15,6 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Movies</title>
 </head>
+<jsp:include page="/jsp/navbar.jsp"></jsp:include>
 <center>
 	<h1>Movies</h1>
 </center>
@@ -33,6 +34,7 @@
 					<td>Start Time</td>
 					<td>End Time</td>
 					<td>List of tickets</td>
+
 				</tr>
 				<%
 					for (Movie movie : movies) {
@@ -43,7 +45,8 @@
 					<td><%=movie.getRoomId()%></td>
 					<td><%=movie.getStartTime()%></td>
 					<td><%=movie.getEndTime()%></td>
-					<td><a href="TicketListServlet?id=<%=movie.getScheduleId()%>">view</a></td>
+					<td><a href="TicketListServlet?id=<%=movie.getScheduleId()%>"
+						class="btn btn-info" role="button"> View</a></td>
 				</tr>
 				<%
 					}

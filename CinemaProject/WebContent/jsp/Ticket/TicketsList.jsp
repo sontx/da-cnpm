@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Tickets</title>
 </head>
 <center>
@@ -14,6 +20,8 @@
 </center>
 
 <body>
+	<jsp:include page="/jsp/navbar.jsp"></jsp:include>
+
 	<%
 		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
 		if (tickets.size() > 0) {
@@ -37,7 +45,8 @@
 					<td><%=ticket.getChairId()%></td>
 					<td><%=ticket.getPrice()%></td>
 					<td><a
-						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"><%=ticket.getState()%></a></td>
+						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"
+						class="btn btn-info" role="button"><%=ticket.getState()%></a></td>
 
 				</tr>
 				<%
