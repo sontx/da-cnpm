@@ -26,4 +26,12 @@ public class TicketBO {
 		
 	}
 
+	public int getNumberOfMovies() {
+		return ticketDAO.getNumberOfMovies();
+	}
+
+	public int getNumberOfTickets(int scheduleId) {
+		return ticketDAO.getNumberOfTickets(scheduleId);
+	}
+
 }

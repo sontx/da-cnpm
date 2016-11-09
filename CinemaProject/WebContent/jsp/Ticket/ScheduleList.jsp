@@ -14,8 +14,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Movies</title>
-</head>
 <jsp:include page="/jsp/navbar.jsp"></jsp:include>
+</head>
+
 <center>
 	<h1>Movies</h1>
 </center>
@@ -56,14 +57,32 @@
 			<%
 				} else {
 			%>
-			Nothing here
+			<center>
+				<h3>Nothing here</h3>
+			</center>
 			<%
 				}
 			%>
 		</center>
+		<!-- pagination -->
+		<%
+			int pageNumber = (Integer) request.getAttribute("pageNumber");
+			int maxPageNumber = (Integer) request.getAttribute("maxPageNumber");
+			int previousPageNumber = pageNumber - 1;
+			if (previousPageNumber <= 0) {
+				previousPageNumber = 1;
+			}
+			int nextPageNumber = pageNumber + 1;
+			if (nextPageNumber > maxPageNumber) {
+				nextPageNumber = maxPageNumber;
+			}
+		%>
+
 		<ul class="pager">
-			<li><a href="#">Previous</a></li>
-			<li><a href="#">Next</a></li>
+			<li><a
+				href="<%=request.getContextPath()%>/MovieListServlet?pageNumber=<%=previousPageNumber%>">Previous</a></li>
+			<li><a
+				href="<%=request.getContextPath()%>/MovieListServlet?pageNumber=<%=nextPageNumber%>">Next</a></li>
 		</ul>
 	</div>
 

@@ -16,7 +16,7 @@ import com.dutproject.cinemaproject.model.dao.service.ITicketService;
 
 public class TicketJdbc extends JdbcService implements ITicketService {
 	@Override
-	public int getNumberOfTickets() {
+	public int getNumberOfTickets( int scheduleId) {
 		CallableStatement callable = null;
 		try {
 			callable = connection.prepareCall("{call ticket_getTicketsCount}");
@@ -131,5 +131,27 @@ public class TicketJdbc extends JdbcService implements ITicketService {
 	public String getSchedule(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getNumberOfMovies() {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call ticket_getSchedulesCount}");
+			ResultSet rs = callable.executeQuery();
+			if (rs.next())
+				return rs.getInt(1);
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return 0;
 	}
 }

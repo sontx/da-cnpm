@@ -18,6 +18,7 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
 @WebServlet("/TicketListServlet")
 public class TicketListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static int MAX_TICKET_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
 
 	private int tryParseInt(String str, int defaultValue) {
@@ -32,6 +33,32 @@ public class TicketListServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public TicketListServlet() {
+	}
+
+	private int getPageNumber(HttpServletRequest request, int id) {
+		String str_pageNumber = request.getParameter("pageNumber");
+		int pageNumber;
+		try {
+			pageNumber = Integer.parseInt(str_pageNumber);
+		} catch (Exception e) {
+			pageNumber = 1;
+		}
+
+		if (pageNumber <= 0) {
+			pageNumber = 1;
+		}
+
+		int maxPageNumber = getMaxPageNumber(id);
+		if (pageNumber > maxPageNumber) {
+			pageNumber = maxPageNumber;
+		}
+
+		return pageNumber;
+	}
+
+	private int getMaxPageNumber(int id) {
+		int numOfTickets = ticketBO.getNumberOfTickets(id);
+		return numOfTickets / MAX_TICKET_PER_PAGE + 1;
 	}
 
 	/**
@@ -49,12 +76,17 @@ public class TicketListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1);
 		String idMovie = request.getParameter("id");
 		int id = Integer.parseInt(idMovie);
+		int pageNumber = getPageNumber(request, id);
+		int maxPageNumber = getMaxPageNumber(id);
+		System.out.println(pageNumber);
+		System.out.println(maxPageNumber);
 
-		List<Ticket> tickets = ticketBO.getTickets(pageNumber, 50, id);
+		List<Ticket> tickets = ticketBO.getTickets(pageNumber, MAX_TICKET_PER_PAGE, id);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("maxPageNumber", maxPageNumber);
+		request.setAttribute("scheduleId", id);
 		request.setAttribute("tickets", tickets);
 		request.getRequestDispatcher("/jsp/Ticket/TicketsList.jsp").forward(request, response);
 

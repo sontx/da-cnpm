@@ -18,6 +18,7 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
 @WebServlet("/MovieListServlet")
 public class MovieListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static int MAX_SCHEDULE_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
 
 	private int tryParseInt(String str, int defaultValue) {
@@ -35,16 +36,43 @@ public class MovieListServlet extends HttpServlet {
 
 	}
 
+	private int getPageNumber(HttpServletRequest request) {
+		String str_pageNumber = request.getParameter("pageNumber");
+		int pageNumber;
+		try {
+			pageNumber = Integer.parseInt(str_pageNumber);
+		} catch (Exception e) {
+			pageNumber = 1;
+		}
+
+		if (pageNumber <= 0) {
+			pageNumber = 1;
+		}
+
+		int maxPageNumber = getMaxPageNumber();
+		if (pageNumber > maxPageNumber) {
+			pageNumber = maxPageNumber;
+		}
+
+		return pageNumber;
+	}
+
+	private int getMaxPageNumber() {
+		int numOfSchedules = ticketBO.getNumberOfMovies();
+		return numOfSchedules / MAX_SCHEDULE_PER_PAGE + 1;
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1);
-
-		List<Movie> movies = ticketBO.getMovies(pageNumber, 50);
+		int pageNumber = getPageNumber(request);
+		int maxPageNumber = getMaxPageNumber();
+		List<Movie> movies = ticketBO.getMovies(pageNumber, MAX_SCHEDULE_PER_PAGE);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("maxPageNumber", maxPageNumber);
 		request.setAttribute("movies", movies);
 		request.getRequestDispatcher("/jsp/Ticket/ScheduleList.jsp").forward(request, response);
 	}

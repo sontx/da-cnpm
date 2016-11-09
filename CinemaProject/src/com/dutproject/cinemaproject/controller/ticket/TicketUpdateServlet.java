@@ -34,15 +34,8 @@ public class TicketUpdateServlet extends HttpServlet {
 		String ticketState = request.getParameter("state");
 		if (ticketState.equals("available")) {
 			ticketBO.updateTicketState(ticketId, "booked");
-
-			System.out.println("ticket id" + ticketId);
-			System.out.println("ticket state booked");
 		} else {
 			ticketBO.updateTicketState(ticketId, "available");
-			// ticketBO.updateTicketState(ticketId, ticketState);
-
-			System.out.println("ticket id" + ticketId);
-			System.out.println("ticket state available");
 		}
 		response.sendRedirect("/CinemaProject/TicketListServlet?id=" + scheduleId);
 	}

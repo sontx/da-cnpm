@@ -13,8 +13,8 @@ public class TicketDAO implements ITicketService {
 	// private ITicketService underlyingService = new TicketTest();
 
 	@Override
-	public int getNumberOfTickets() {
-		return underlyingService.getNumberOfTickets();
+	public int getNumberOfTickets(int scheduleId) {
+		return underlyingService.getNumberOfTickets(scheduleId);
 	}
 
 	@Override
@@ -34,5 +34,9 @@ public class TicketDAO implements ITicketService {
 
 	public String getSchedule(int id) {
 		return underlyingService.getSchedule(id);
+	}
+
+	public int getNumberOfMovies() {
+		return underlyingService.getNumberOfMovies();
 	}
 }
