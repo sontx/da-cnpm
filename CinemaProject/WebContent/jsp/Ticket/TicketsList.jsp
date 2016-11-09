@@ -18,38 +18,45 @@
 		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
 		if (tickets.size() > 0) {
 	%>
-	<center>
-		<table border="1">
-			<tr>
-				<td>Ticket ID</td>
-				<td>Schedule ID</td>
-				<td>Chair ID</td>
-				<td>Price</td>
-				<td>State</td>
-			</tr>
-			<%
-				for (Ticket ticket : tickets) {
-			%>
-			<tr>
-				<td><%=ticket.getTicketId()%></td>
-				<td><%=ticket.getScheduleId()%></td>
-				<td><%=ticket.getChairId()%></td>
-				<td><%=ticket.getPrice()%></td>
-				<td><a
-					href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"><%=ticket.getState()%></a></td>
+	<div class="container">
+		<center>
+			<table class="table table-striped" border="1">
+				<tr>
+					<td>Ticket ID</td>
+					<td>Schedule ID</td>
+					<td>Chair ID</td>
+					<td>Price</td>
+					<td>State</td>
+				</tr>
+				<%
+					for (Ticket ticket : tickets) {
+				%>
+				<tr>
+					<td><%=ticket.getTicketId()%></td>
+					<td><%=ticket.getScheduleId()%></td>
+					<td><%=ticket.getChairId()%></td>
+					<td><%=ticket.getPrice()%></td>
+					<td><a
+						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"><%=ticket.getState()%></a></td>
 
-			</tr>
+				</tr>
+				<%
+					}
+				%>
+			</table>
+			<%
+				} else {
+			%>
+			Nothing here
 			<%
 				}
 			%>
-		</table>
-		<%
-			} else {
-		%>
-		Nothing here
-		<%
-			}
-		%>
-	</center>
+		</center>
+		<ul class="pager">
+			<li><a href="#">Previous</a></li>
+			<li><a href="#">Next</a></li>
+		</ul>
+	</div>
+
 </body>
 </html>
