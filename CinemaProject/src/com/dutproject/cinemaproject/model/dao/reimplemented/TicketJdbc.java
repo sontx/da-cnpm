@@ -16,10 +16,10 @@ import com.dutproject.cinemaproject.model.dao.service.ITicketService;
 
 public class TicketJdbc extends JdbcService implements ITicketService {
 	@Override
-	public int getNumberOfTickets( int scheduleId) {
+	public int getNumberOfTickets(int scheduleId) {
 		CallableStatement callable = null;
 		try {
-			callable = connection.prepareCall("{call ticket_getTicketsCount}");
+			callable = connection.prepareCall("{call ticket_getTicketsCount(?)}");
 			ResultSet rs = callable.executeQuery();
 			if (rs.next())
 				return rs.getInt(1);

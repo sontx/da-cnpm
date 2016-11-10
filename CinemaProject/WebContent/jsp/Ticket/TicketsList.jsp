@@ -76,15 +76,14 @@
 			if (nextPageNumber > maxPageNumber) {
 				nextPageNumber = maxPageNumber;
 			}
+			
 		%>
+		<tr><td><%= previousPageNumber %></td></tr>
 		<ul class="pager">
-			<%
-				int scheduleId = (Integer) request.getAttribute("scheduleId");
-			%>
 			<li><a
-				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=previousPageNumber%>&scheduleId=<%=scheduleId%>">Previous</a></li>
+				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=previousPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Previous</a></li>
 			<li><a
-				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=nextPageNumber%>&scheduleId=<%=scheduleId%>">Next</a></li>
+				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=nextPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Next</a></li>
 		</ul>
 	</div>
 

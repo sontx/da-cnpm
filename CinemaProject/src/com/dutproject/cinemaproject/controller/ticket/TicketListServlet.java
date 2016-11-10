@@ -80,8 +80,8 @@ public class TicketListServlet extends HttpServlet {
 		int id = Integer.parseInt(idMovie);
 		int pageNumber = getPageNumber(request, id);
 		int maxPageNumber = getMaxPageNumber(id);
-		System.out.println(pageNumber);
-		System.out.println(maxPageNumber);
+		
+		System.out.println(ticketBO.getNumberOfTickets(id));
 
 		List<Ticket> tickets = ticketBO.getTickets(pageNumber, MAX_TICKET_PER_PAGE, id);
 		request.setAttribute("pageNumber", pageNumber);
