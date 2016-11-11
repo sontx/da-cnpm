@@ -1,52 +1,81 @@
 <%@page import="com.dutproject.cinemaproject.model.bean.Room"%>
 <%@page import="java.util.ArrayList"%>
-
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Rooms</title>
+    <title>Rooms</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<%
-		Room room = (Room) request.getAttribute("room");
-	%>
-	<div align="center">
-		<form action="UpdateRoomAction" method="post">
-			<table>
-				<tr>
-					<td>Id:</td>
-					<td><input style="width: 100%" readonly="readonly" type="text"
-						required="required" name="id" value="<%=room.getId()%>"></td>
-				</tr>
-				<tr>
-					<td>Room Name:</td>
-					<td><input style="width: 100%" type="text" required="required"
-						name="roomName" value="<%=room.getRoomName()%>"></td>
-				</tr>
-				<tr>
-					<td>Rows:</td>
-					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="rows" value="<%=room.getRows()%>"></td>
-				</tr>
-				<tr>
-					<td>Columns:</td>
-					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="columns" value="<%=room.getColumns()%>"></td>
-				</tr>
-				<tr>
-					<td>Available:</td>
-					<td><input type="checkbox" style="width: 100%" name="status" <%=room.getStatus() != 0 ? "checked" : ""%>></td>
-				</tr>
-				<tr align="right">
-					<td></td>
-					<td><input type="submit" value="Update"> <input
-						type="button" value="Cancel"></td>
-				</tr>
-			</table>
+    
+    <jsp:include page="/jsp/navbar.jsp"></jsp:include>
+
+	<% Room room = (Room) request.getAttribute("room"); %>
+	<div class="container">
+		<form class="form-horizontal" action="UpdateRoomAction" method="post">
+		<fieldset>
+		
+		<legend class="text-center">Update Room</legend>
+		
+        <div class="form-group">
+          <label class="col-md-4 control-label">Id</label>  
+          <div class="col-md-5">
+	          <input name="id" type="text" value="<%=room.getId()%>"
+	            class="form-control input-md" readonly="readonly" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Room Name</label>  
+          <div class="col-md-5">
+              <input name="roomName" type="text" value="<%=room.getRoomName()%>"
+                class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Rows</label>  
+          <div class="col-md-5">
+              <input name="rows" type="number" value="<%=room.getRows()%>" maxlength="5"
+                class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Columns</label>  
+          <div class="col-md-5">
+              <input name="columns" type="number" value="<%=room.getColumns()%>" maxlength="5"
+                class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Available</label>  
+          <div class="col-md-5">
+              <input name="status" type="checkbox" <%=room.getStatus() != 0 ? "checked" : ""%>
+                class="checkbox">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-8">
+            <button type="submit" class="btn btn-success">Update</button>
+            <a class="btn btn-default" onclick="history.go(-1);">Cancel</a>
+          </div>
+        </div>
+		</fieldset>
 		</form>
 	</div>
 </body>
