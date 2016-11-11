@@ -18,7 +18,7 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
 @WebServlet("/TicketListServlet")
 public class TicketListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static int MAX_TICKET_PER_PAGE = 2;
+	public static final int MAX_TICKET_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
 
 	private int tryParseInt(String str, int defaultValue) {
@@ -39,7 +39,7 @@ public class TicketListServlet extends HttpServlet {
 		String str_pageNumber = request.getParameter("pageNumber");
 		int pageNumber;
 		try {
-			pageNumber = Integer.parseInt(str_pageNumber);
+			pageNumber = tryParseInt(str_pageNumber, 0);
 		} catch (Exception e) {
 			pageNumber = 1;
 		}
@@ -76,12 +76,12 @@ public class TicketListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String idMovie = request.getParameter("id");
-		int id = Integer.parseInt(idMovie);
+		String idMovie = request.getParameter("scheduleId");
+		int id = tryParseInt(idMovie, 0);
 		int pageNumber = getPageNumber(request, id);
 		int maxPageNumber = getMaxPageNumber(id);
 		
-		System.out.println(ticketBO.getNumberOfTickets(id));
+		//System.out.println(ticketBO.getNumberOfTickets(id));
 
 		List<Ticket> tickets = ticketBO.getTickets(pageNumber, MAX_TICKET_PER_PAGE, id);
 		request.setAttribute("pageNumber", pageNumber);

@@ -3,13 +3,8 @@ package com.dutproject.cinemaproject.model.dao.reimplemented;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-
-import com.dutproject.cinemaproject.model.bean.Account;
-import com.dutproject.cinemaproject.model.bean.AccountProfile;
 import com.dutproject.cinemaproject.model.bean.Movie;
 import com.dutproject.cinemaproject.model.bean.Ticket;
 import com.dutproject.cinemaproject.model.dao.service.ITicketService;
@@ -20,6 +15,7 @@ public class TicketJdbc extends JdbcService implements ITicketService {
 		CallableStatement callable = null;
 		try {
 			callable = connection.prepareCall("{call ticket_getTicketsCount(?)}");
+			callable.setInt(1, scheduleId);
 			ResultSet rs = callable.executeQuery();
 			if (rs.next())
 				return rs.getInt(1);
