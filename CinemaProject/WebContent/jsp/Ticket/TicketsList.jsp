@@ -78,13 +78,8 @@
 			}
 		%>
 		<tr>
-		<td><%= previousPageNumber %></td>
 		</tr>
-		
-		<tr>
-		<td><%= nextPageNumber %></td>
-		</tr>
-		
+
 		<ul class="pager">
 			<li><a
 				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=previousPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Previous</a></li>

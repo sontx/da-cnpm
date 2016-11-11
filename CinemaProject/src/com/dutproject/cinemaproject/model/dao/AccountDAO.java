@@ -11,6 +11,8 @@ public class AccountDAO {
 			return Account.SCHEDULE_MANAGER;
 		} else if ("admin3".equals(account.getUsername())) {
 			return Account.ROOM_MANAGER;
+		} else if ("minhthao".equals(account.getUsername())) {
+			return Account.TICKET_MANAGER;
 		}
 		return Account.NO_PERMISSION;
 	}

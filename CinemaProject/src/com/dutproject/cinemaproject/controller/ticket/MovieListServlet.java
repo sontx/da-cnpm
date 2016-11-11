@@ -16,23 +16,22 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
  * Servlet implementation class MovieListServlet
  */
 @WebServlet("/MovieListServlet")
-public class MovieListServlet extends HttpServlet {
+public class MovieListServlet extends TicketFilterServlet {
 	private static final long serialVersionUID = 1L;
 	public static int MAX_SCHEDULE_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
 
-	private int tryParseInt(String str, int defaultValue) {
-		try {
-			return Integer.parseInt(str);
-		} catch (Exception e) {
-			return defaultValue;
-		}
-	}
+	@Override
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MovieListServlet() {
+		int pageNumber = getPageNumber(request);
+		int maxPageNumber = getMaxPageNumber();
+		List<Movie> movies = ticketBO.getMovies(pageNumber, MAX_SCHEDULE_PER_PAGE);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("maxPageNumber", maxPageNumber);
+		request.setAttribute("movies", movies);
+		request.getRequestDispatcher("/jsp/Ticket/ScheduleList.jsp").forward(request, response);
 
 	}
 
@@ -60,31 +59,6 @@ public class MovieListServlet extends HttpServlet {
 	private int getMaxPageNumber() {
 		int numOfSchedules = ticketBO.getNumberOfMovies();
 		return numOfSchedules / MAX_SCHEDULE_PER_PAGE + 1;
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		int pageNumber = getPageNumber(request);
-		int maxPageNumber = getMaxPageNumber();
-		List<Movie> movies = ticketBO.getMovies(pageNumber, MAX_SCHEDULE_PER_PAGE);
-		request.setAttribute("pageNumber", pageNumber);
-		request.setAttribute("maxPageNumber", maxPageNumber);
-		request.setAttribute("movies", movies);
-		request.getRequestDispatcher("/jsp/Ticket/ScheduleList.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

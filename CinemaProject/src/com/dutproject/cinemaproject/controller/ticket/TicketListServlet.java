@@ -16,30 +16,16 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
  * Servlet implementation class TicketListServlet
  */
 @WebServlet("/TicketListServlet")
-public class TicketListServlet extends HttpServlet {
+public class TicketListServlet extends TicketFilterServlet {
 	private static final long serialVersionUID = 1L;
 	public static final int MAX_TICKET_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
-
-	private int tryParseInt(String str, int defaultValue) {
-		try {
-			return Integer.parseInt(str);
-		} catch (Exception e) {
-			return defaultValue;
-		}
-	}
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public TicketListServlet() {
-	}
 
 	private int getPageNumber(HttpServletRequest request, int id) {
 		String str_pageNumber = request.getParameter("pageNumber");
 		int pageNumber;
 		try {
-			pageNumber = tryParseInt(str_pageNumber, 0);
+			pageNumber = Integer.parseInt(str_pageNumber);
 		} catch (Exception e) {
 			pageNumber = 1;
 		}
@@ -61,27 +47,13 @@ public class TicketListServlet extends HttpServlet {
 		return numOfTickets / MAX_TICKET_PER_PAGE + 1;
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idMovie = request.getParameter("scheduleId");
-		int id = tryParseInt(idMovie, 0);
+		int id = Integer.parseInt(idMovie);
 		int pageNumber = getPageNumber(request, id);
 		int maxPageNumber = getMaxPageNumber(id);
-		
-		//System.out.println(ticketBO.getNumberOfTickets(id));
 
 		List<Ticket> tickets = ticketBO.getTickets(pageNumber, MAX_TICKET_PER_PAGE, id);
 		request.setAttribute("pageNumber", pageNumber);
