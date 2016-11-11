@@ -20,12 +20,14 @@ public class TicketListServlet extends TicketFilterServlet {
 	private static final long serialVersionUID = 1L;
 	public static final int MAX_TICKET_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
+	
+	
 
 	private int getPageNumber(HttpServletRequest request, int id) {
 		String str_pageNumber = request.getParameter("pageNumber");
 		int pageNumber;
 		try {
-			pageNumber = Integer.parseInt(str_pageNumber);
+			pageNumber = tryParseInt(str_pageNumber, 0);
 		} catch (Exception e) {
 			pageNumber = 1;
 		}
@@ -51,7 +53,7 @@ public class TicketListServlet extends TicketFilterServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idMovie = request.getParameter("scheduleId");
-		int id = Integer.parseInt(idMovie);
+		int id = tryParseInt(idMovie, 0);
 		int pageNumber = getPageNumber(request, id);
 		int maxPageNumber = getMaxPageNumber(id);
 

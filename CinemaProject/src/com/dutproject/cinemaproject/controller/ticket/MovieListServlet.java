@@ -39,7 +39,7 @@ public class MovieListServlet extends TicketFilterServlet {
 		String str_pageNumber = request.getParameter("pageNumber");
 		int pageNumber;
 		try {
-			pageNumber = Integer.parseInt(str_pageNumber);
+			pageNumber = tryParseInt(str_pageNumber, 0);
 		} catch (Exception e) {
 			pageNumber = 1;
 		}

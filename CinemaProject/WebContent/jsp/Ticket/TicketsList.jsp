@@ -77,8 +77,6 @@
 				nextPageNumber = maxPageNumber;
 			}
 		%>
-		<tr>
-		</tr>
 
 		<ul class="pager">
 			<li><a
