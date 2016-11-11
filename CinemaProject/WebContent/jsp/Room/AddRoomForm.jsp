@@ -1,41 +1,62 @@
 <%@page import="com.dutproject.cinemaproject.model.bean.Room"%>
 <%@page import="java.util.ArrayList"%>
-
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Rooms</title>
+    <title>Rooms</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<div align="center">
-		<form action="UpdateRoomAction" method="post">
-			<table>
-				<tr>
-					<td>Room Name:</td>
-					<td><input style="width: 100%" type="text" required="required"
-						name="roomName"></td>
-				</tr>
-				<tr>
-					<td>Rows:</td>
-					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="rows"></td>
-				</tr>
-				<tr>
-					<td>Columns:</td>
-					<td><input style="width: 100%" type="number"
-						required="required" maxlength="5" name="columns"></td>
-				</tr>
-				<tr align="right">
-					<td></td>
-					<td><input type="submit" value="Add"> <input
-						type="button" value="Cancel"></td>
-				</tr>
-			</table>
-		</form>
+
+    <jsp:include page="/jsp/navbar.jsp"></jsp:include>
+
+	<div class="container">
+		<form class="form-horizontal" action="UpdateRoomAction" method="post">
+		<fieldset>
+		
+        <legend class="text-center">Update Room</legend>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Room Name</label>  
+          <div class="col-md-5">
+              <input name="roomName" type="text" class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Rows</label>  
+          <div class="col-md-5">
+              <input name="rows" type="number" maxlength="5" class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label">Columns</label>  
+          <div class="col-md-5">
+              <input name="columns" type="number" maxlength="5" class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-8">
+            <button type="submit" class="btn btn-success">Add</button>
+            <a class="btn btn-default" onclick="history.go(-1);">Cancel</a>
+          </div>
+        </div>
+		</fieldset>
+        </form>
 	</div>
 </body>
 </html>
