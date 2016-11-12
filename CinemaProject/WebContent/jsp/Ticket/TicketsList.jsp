@@ -3,54 +3,57 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Tickets</title>
+    <title>Tickets</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 </head>
-<center>
-	<h1>List tickets</h1>
-</center>
 
 <body>
-	<center>
-		<h2><%=request.getAttribute("nameOfMovie")%></h2>
-	</center>
-	<%
-		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
-		if (tickets.size() > 0) {
-	%>
-	<center>
-		<table border="1">
-			<tr>
-				<td>Id</td>
-				<td>Seat Number</td>
-				<td>State</td>
-				<td>Date Time</td>
-			</tr>
-			<%
-				for (Ticket ticket : tickets) {
-			%>
-			<tr>
-				<td><%=ticket.getId()%></td>
-				<td><%=ticket.getSeatNumber()%></td>
-				<td><a
-					href="TicketUpdateServlet?id=<%=ticket.getId()%>&state=<%=ticket.getState()%>"><%=ticket.getState()%></a></td>
-				<td><%=ticket.getDateTime()%></td>
 
-			</tr>
-			<%
-				}
-			%>
-		</table>
-		<%
-			} else {
-		%>
+    <jsp:include page="/jsp/navbar.jsp"></jsp:include>
+
+    <div class="container text-center">
+        <h1>List tickets</h1>
+    </div>
+    
+    <div class="container text-center">
+		<h2>Film: <%=request.getAttribute("nameOfMovie")%></h2>
+	</div>
+	
+	<!-- list tickets -->
+	<%  List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
+		if (tickets.size() > 0) { %>
+	<div class="container">
+	    <div class="panel panel-default">
+			<table class="table">
+				<tr>
+					<th>Id</th>
+					<th>Seat Number</th>
+					<th>State</th>
+					<th>Date Time</th>
+				</tr>
+				<% for (Ticket ticket : tickets) { %>
+				<tr>
+					<td><%=ticket.getId()%></td>
+					<td><%=ticket.getSeatNumber()%></td>
+					<td><a href="TicketUpdateServlet?id=<%=ticket.getId()%>&state=<%=ticket.getState()%>">
+					       <%=ticket.getState()%></a></td>
+					<td><%=ticket.getDateTime()%></td>
+				</tr>
+                <% } %>
+            </table>
+		<% } else { %>
 		Nothing here
-		<%
-			}
-		%>
-	</center>
+		<% } %>
+		</div>
+	</div>
 </body>
 </html>
