@@ -3,53 +3,49 @@
 <%@page import="com.dutproject.cinemaproject.model.bean.Ticket"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-    <title>Movies</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
-    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Movies</title>
 </head>
-
+<center>
+	<h1>Movies</h1>
+</center>
 <body>
-
-    <jsp:include page="/jsp/navbar.jsp"></jsp:include>
-
-    <div class="container text-center">
-        <h1>Movies</h1>
-    </div>
-    
 	<%
 		List<Movie> movies = (List<Movie>) request.getAttribute("movies");
 		if (movies.size() > 0) {
 	%>
-	<div class="container">
-        <div class="panel panel-default">
-			<table class="table">
-				<tr>
-					<th>Id</th>
-					<th>Name of movie</th>
-					<th>Schedule</th>
-					<th>List of tickets</th>
-				</tr>
-				<% for (Movie movie : movies) { %>
-				<tr>
-					<td><%=movie.getId()%></td>
-					<td><%=movie.getNameOfMovie()%></td>
-					<td><%=movie.getSchedule()%></td>
-					<td><a href="TicketListServlet?id=<%=movie.getId()%>">View</a></td>
-				</tr>
-				<% } %>
-			</table>
-		<% } else { %>
+	<center>
+		<table border="1">
+			<tr>
+				<td>Id</td>
+				<td>Name of movie</td>
+				<td>Schedule</td>
+				<td>List of tickets</td>
+			</tr>
+			<%
+				for (Movie movie : movies) {
+			%>
+			<tr>
+				<td><%=movie.getId()%></td>
+				<td><%=movie.getNameOfMovie()%></td>
+				<td><%=movie.getSchedule()%></td>
+				<td><a href="TicketListServlet?id=<%=movie.getId()%>">view</a></td>
+			</tr>
+			<%
+				}
+			%>
+
+		</table>
+		<%
+			} else {
+		%>
 		Nothing here
-		<% } %>
-		</div>
-	</div>
+		<%
+			}
+		%>
+	</center>
 </body>
 </html>
