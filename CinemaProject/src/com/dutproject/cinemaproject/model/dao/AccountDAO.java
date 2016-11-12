@@ -13,6 +13,8 @@ public class AccountDAO {
 			return Account.ROOM_MANAGER;
 		} else if ("adminfilm".equals(account.getUsername())) {
 			return Account.FILM_MANAGER;
+		} else if ("adminticket".equals(account.getUsername())) {
+			return Account.TICKET_MANAGER;
 		}
 		return Account.NO_PERMISSION;
 	}
