@@ -1,4 +1,4 @@
-package com.dutproject.cinemaproject.model.dao.schedule;
+package com.dutproject.cinemaproject.model.dao.schedule.service;
 
 import java.util.List;
 
@@ -11,4 +11,5 @@ public interface IScheduleService {
 	public boolean deleteScheduleById(int id);
 	public boolean updateSchedule(Schedule schedule);
 	public Schedule getScheduleById(int id);
+	int getScheduleId(Schedule schedule);
 }

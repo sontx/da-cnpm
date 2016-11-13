@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ScheduleManagement", urlPatterns = { "/ScheduleManagement" })
 public class ScheduleManagementServlet extends ScheduleManagerFilterServlet {
 	private static final long serialVersionUID = 1L;
-	public static int MAX_SCHEDULE_PER_PAGE = 20;
+	public static int MAX_SCHEDULE_PER_PAGE = 2;
 	
 	private ScheduleBO scheduleBO = new ScheduleBO();
 
@@ -41,7 +41,7 @@ public class ScheduleManagementServlet extends ScheduleManagerFilterServlet {
 
 	private int getMaxPageNumber() {
 		int numOfSchedules = scheduleBO.getNumOfSchedules();
-		return numOfSchedules / MAX_SCHEDULE_PER_PAGE + 1;
+		return (numOfSchedules + MAX_SCHEDULE_PER_PAGE - 1) / MAX_SCHEDULE_PER_PAGE;
 	}
 
 	@Override

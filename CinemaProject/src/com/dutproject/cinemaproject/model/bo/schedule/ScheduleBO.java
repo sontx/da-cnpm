@@ -31,5 +31,9 @@ public class ScheduleBO {
 	public boolean updateSchedule(Schedule schedule) {
 		return scheduleDAO.updateSchedule(schedule);
 	}
+
+	public int getScheduleId(Schedule schedule) {
+		return scheduleDAO.getScheduleId(schedule);
+	}
 	
 }
