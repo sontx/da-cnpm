@@ -46,7 +46,7 @@
 					<td><%=ticket.getChairId()%></td>
 					<td><%=ticket.getPrice()%></td>
 					<td><a
-						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"
+						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&id=<%=ticket.getScheduleId()%>"
 						class="btn btn-info"><%=ticket.getState()%></a></td>
 
 				</tr>
@@ -77,7 +77,6 @@
 				nextPageNumber = maxPageNumber;
 			}
 		%>
-
 		<ul class="pager">
 			<li><a
 				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=previousPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Previous</a></li>

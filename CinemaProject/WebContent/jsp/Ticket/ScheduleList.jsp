@@ -46,7 +46,7 @@
 					<td><%=movie.getRoomId()%></td>
 					<td><%=movie.getStartTime()%></td>
 					<td><%=movie.getEndTime()%></td>
-					<td><a href="TicketListServlet?id=<%=movie.getScheduleId()%>"
+					<td><a href="TicketListServlet?scheduleId=<%=movie.getScheduleId()%>"
 						class="btn btn-info" role="button"> View</a></td>
 				</tr>
 				<%
