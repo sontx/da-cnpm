@@ -50,7 +50,7 @@ public class LoginActionServlet extends BaseServlet {
 			site = "ScheduleManagement";
 			break;
 		case Account.TICKET_MANAGER:
-			site = "TicketListServlet";
+			site = "MovieListServlet";
 			break;
 		case Account.NO_PERMISSION:
 			break;

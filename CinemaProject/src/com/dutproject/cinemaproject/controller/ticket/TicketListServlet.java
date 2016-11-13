@@ -16,49 +16,53 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
  * Servlet implementation class TicketListServlet
  */
 @WebServlet("/TicketListServlet")
-public class TicketListServlet extends HttpServlet {
+public class TicketListServlet extends TicketFilterServlet {
 	private static final long serialVersionUID = 1L;
+	public static final int MAX_TICKET_PER_PAGE = 2;
 	private TicketBO ticketBO = new TicketBO();
+	
+	
 
-	private int tryParseInt(String str, int defaultValue) {
+	private int getPageNumber(HttpServletRequest request, int id) {
+		String str_pageNumber = request.getParameter("pageNumber");
+		int pageNumber;
 		try {
-			return Integer.parseInt(str);
+			pageNumber = tryParseInt(str_pageNumber, 0);
 		} catch (Exception e) {
-			return defaultValue;
+			pageNumber = 1;
 		}
+
+		if (pageNumber <= 0) {
+			pageNumber = 1;
+		}
+
+		int maxPageNumber = getMaxPageNumber(id);
+		if (pageNumber > maxPageNumber) {
+			pageNumber = maxPageNumber;
+		}
+
+		return pageNumber;
 	}
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public TicketListServlet() {
+	private int getMaxPageNumber(int id) {
+		int numOfTickets = ticketBO.getNumberOfTickets(id);
+		return numOfTickets / MAX_TICKET_PER_PAGE + 1;
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
-	}
+		String idMovie = request.getParameter("scheduleId");
+		int id = tryParseInt(idMovie, 0);
+		int pageNumber = getPageNumber(request, id);
+		int maxPageNumber = getMaxPageNumber(id);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
-		String idMovie = request.getParameter("id");
-		int id = Integer.parseInt(idMovie);
-
-		List<Ticket> tickets = ticketBO.getTickets(pageNumber * 50, 50);
-		String nameOfMovie = ticketBO.getNameOfMovie(id);
-		request.setAttribute("nameOfMovie", nameOfMovie);
+		List<Ticket> tickets = ticketBO.getTickets(pageNumber, MAX_TICKET_PER_PAGE, id);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("maxPageNumber", maxPageNumber);
+		request.setAttribute("scheduleId", id);
 		request.setAttribute("tickets", tickets);
-		request.getRequestDispatcher("jsp/Ticket/TicketsList.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/Ticket/TicketsList.jsp").forward(request, response);
 
 	}
 

@@ -6,17 +6,15 @@ import com.dutproject.cinemaproject.model.bean.Movie;
 import com.dutproject.cinemaproject.model.bean.Ticket;
 
 public interface ITicketService {
-	int getNumberOfTickets();
+	int getNumberOfTickets(int scheduleId);
 
-	List<Ticket> getTickets(int offset, int count);
+	List<Ticket> getTickets(int offset, int count, int scheduleId);
 	
-	void updateTicketState(Ticket ticket);
-
-	void updateTicketState(int id, String state);
+	void updateTicketState(int ticketId, String string);
 	
 	List <Movie> getMovies (int offset, int count);
-	
-	int getNumberOfMovies();
 
-	String getNameOfMovie(int id);
+	String getSchedule(int id);
+
+	int getNumberOfMovies();
 }

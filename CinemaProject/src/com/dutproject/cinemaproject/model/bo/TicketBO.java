@@ -9,19 +9,29 @@ import com.dutproject.cinemaproject.model.dao.TicketDAO;
 public class TicketBO {
 	private TicketDAO ticketDAO = new TicketDAO();
 
-	public List<Ticket> getTickets(int offset, int count) {
-		return ticketDAO.getTickets(offset, count);
-	}
-
-	public void updateTicketState(int id, String state) {
-		ticketDAO.updateTicketState(id, state);
+	public List<Ticket> getTickets(int offset, int count, int scheduleId) {
+		return ticketDAO.getTickets(offset, count, scheduleId);
 	}
 
 	public List<Movie> getMovies(int offset, int count) {
 		return ticketDAO.getMovies(offset, count);
 	}
-	
-	public String getNameOfMovie(int id) {
-		return ticketDAO.getNameOfMovie(id);
+
+	public String getSchedule(int id) {
+		return ticketDAO.getSchedule(id);
 	}
+
+	public void updateTicketState(int ticketId, String string) {
+		ticketDAO.updateTicketState(ticketId, string);
+		
+	}
+
+	public int getNumberOfMovies() {
+		return ticketDAO.getNumberOfMovies();
+	}
+
+	public int getNumberOfTickets(int scheduleId) {
+		return ticketDAO.getNumberOfTickets(scheduleId);
+	}
+
 }

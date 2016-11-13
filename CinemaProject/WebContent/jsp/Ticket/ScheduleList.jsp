@@ -1,6 +1,6 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.dutproject.cinemaproject.model.bean.Ticket"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.Movie"%>
 <%@page import="java.util.List"%>
+<%@page import="com.dutproject.cinemaproject.model.bean.Ticket"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,46 +13,46 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Tickets</title>
-</head>
+<title>Movies</title>
 <jsp:include page="/jsp/navbar.jsp"></jsp:include>
+</head>
+
 <center>
-	<h1>List tickets</h1>
+	<h1>Movies</h1>
 </center>
-
 <body>
-
-
 	<%
-		List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
-		if (tickets.size() > 0) {
+		List<Movie> movies = (List<Movie>) request.getAttribute("movies");
+		if (movies.size() > 0) {
 	%>
 	<div class="container">
 		<center>
 			<table class="table table-striped" border="1">
 				<tr>
-					<td>Ticket ID</td>
 					<td>Schedule ID</td>
-					<td>Chair ID</td>
-					<td>Price</td>
-					<td>State</td>
+					<td>Name of movie</td>
+					<td>Room ID</td>
+					<td>Start Time</td>
+					<td>End Time</td>
+					<td>List of tickets</td>
+
 				</tr>
 				<%
-					for (Ticket ticket : tickets) {
+					for (Movie movie : movies) {
 				%>
 				<tr>
-					<td><%=ticket.getTicketId()%></td>
-					<td><%=ticket.getScheduleId()%></td>
-					<td><%=ticket.getChairId()%></td>
-					<td><%=ticket.getPrice()%></td>
-					<td><a
-						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&id=<%=ticket.getScheduleId()%>"
-						class="btn btn-info"><%=ticket.getState()%></a></td>
-
+					<td><%=movie.getScheduleId()%></td>
+					<td><%=movie.getFilmName()%></td>
+					<td><%=movie.getRoomId()%></td>
+					<td><%=movie.getStartTime()%></td>
+					<td><%=movie.getEndTime()%></td>
+					<td><a href="TicketListServlet?scheduleId=<%=movie.getScheduleId()%>"
+						class="btn btn-info" role="button"> View</a></td>
 				</tr>
 				<%
 					}
 				%>
+
 			</table>
 			<%
 				} else {
@@ -77,11 +77,12 @@
 				nextPageNumber = maxPageNumber;
 			}
 		%>
+
 		<ul class="pager">
 			<li><a
-				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=previousPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Previous</a></li>
+				href="<%=request.getContextPath()%>/MovieListServlet?pageNumber=<%=previousPageNumber%>">Previous</a></li>
 			<li><a
-				href="<%=request.getContextPath()%>/TicketListServlet?pageNumber=<%=nextPageNumber%>&scheduleId=<%=(Integer) request.getAttribute("scheduleId")%>">Next</a></li>
+				href="<%=request.getContextPath()%>/MovieListServlet?pageNumber=<%=nextPageNumber%>">Next</a></li>
 		</ul>
 	</div>
 
