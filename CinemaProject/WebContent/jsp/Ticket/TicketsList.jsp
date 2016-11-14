@@ -46,7 +46,7 @@
 					<td><%=ticket.getChairId()%></td>
 					<td><%=ticket.getPrice()%></td>
 					<td><a
-						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&id=<%=ticket.getScheduleId()%>"
+						href="TicketUpdateServlet?id=<%=ticket.getTicketId()%>&state=<%=ticket.getState()%>&scheduleId=<%=ticket.getScheduleId()%>"
 						class="btn btn-info"><%=ticket.getState()%></a></td>
 
 				</tr>

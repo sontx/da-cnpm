@@ -28,7 +28,7 @@ public class TicketUpdateServlet extends TicketFilterServlet {
 		} else {
 			ticketBO.updateTicketState(ticketId, "available");
 		}
-		response.sendRedirect("/CinemaProject/TicketListServlet?id=" + scheduleId);
+		response.sendRedirect("/CinemaProject/TicketListServlet?scheduleId=" + scheduleId);
 
 	}
 
