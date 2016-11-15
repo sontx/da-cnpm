@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ScheduleManagement", urlPatterns = { "/ScheduleManagement" })
 public class ScheduleManagementServlet extends ScheduleManagerFilterServlet {
 	private static final long serialVersionUID = 1L;
-	public static int MAX_SCHEDULE_PER_PAGE = 2;
+	public static int MAX_SCHEDULE_PER_PAGE = 20;
 	
 	private ScheduleBO scheduleBO = new ScheduleBO();
 
