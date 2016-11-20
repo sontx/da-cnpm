@@ -54,4 +54,10 @@ public class FilmTest implements IFilmService {
 		return null;
 	}
 
+	@Override
+	public void deleteFilm(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

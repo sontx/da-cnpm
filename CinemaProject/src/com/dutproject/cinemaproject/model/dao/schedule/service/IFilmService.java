@@ -13,5 +13,6 @@ public interface IFilmService {
 	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException;
 	public void updateFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException;
 	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) throws SQLException;
+	public void deleteFilm(int id) throws SQLException;
 	
 }
