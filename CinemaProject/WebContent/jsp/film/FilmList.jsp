@@ -38,7 +38,7 @@
 				<form class="col-md-3" action="SearchFilmAction" method="get">
 					<div class="input-group col-md-12">
 						<input type="text" class="  search-query form-control"
-							placeholder="Search" /> <span class="input-group-btn">
+							placeholder="Search" name="keyword" /> <span class="input-group-btn">
 							<button class="btn btn-info" type="submit">
 								<span class=" glyphicon glyphicon-search"></span>
 							</button>

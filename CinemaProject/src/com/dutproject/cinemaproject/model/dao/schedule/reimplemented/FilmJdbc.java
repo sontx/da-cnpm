@@ -198,4 +198,42 @@ public class FilmJdbc extends JdbcService implements IFilmService {
 		}
 	}
 
+	@Override
+	public List<com.dutproject.cinemaproject.model.bean.Film> searchFilm(String keyword, int pageNumber, int maxOfRecords)
+			throws SQLException {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call [film_searchFilm](?,?,?)}");
+			callable.setInt(1, pageNumber);
+			callable.setInt(2, maxOfRecords);
+			callable.setString(3, keyword);
+			ResultSet rs = callable.executeQuery();
+			List<com.dutproject.cinemaproject.model.bean.Film> films = new ArrayList<>();
+			while (rs.next()) {
+				com.dutproject.cinemaproject.model.bean.Film film = new com.dutproject.cinemaproject.model.bean.Film();
+				int filmId = rs.getInt("filmId");
+				String filmName = rs.getString("filmName");
+				String description = rs.getString("description");
+				int length = rs.getInt("length");
+				int ageLimited = rs.getInt("ageLimited");
+				film.setFilmId(filmId);
+				film.setFilmName(filmName);
+				film.setDescription(description);
+				film.setLength(length);
+				film.setAgeLimithed(ageLimited);
+				
+				films.add(film);
+			}
+			rs.close();
+			return films;
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 }
