@@ -18,6 +18,10 @@ public class Account {
 		this.password = password;
 	}
 
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUsername() {
 		return username;
 	}
