@@ -12,7 +12,7 @@ import com.dutproject.cinemaproject.model.bean.Film;
 import com.dutproject.cinemaproject.model.bo.schedule.FilmBO;
 
 @WebServlet(name = "AddFilmAction", urlPatterns = { "/film/AddFilmAction" })
-public class AddFilmAction extends BaseServlet {
+public class AddFilmActionServlet extends BaseServlet {
 	private FilmBO filmBO = new FilmBO();
 
 	@Override
