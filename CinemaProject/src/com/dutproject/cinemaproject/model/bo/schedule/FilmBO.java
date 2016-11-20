@@ -51,4 +51,14 @@ public class FilmBO {
 		}
 		return false;
 	}
+
+	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) {
+		try {
+			return filmDAO.getFilm(filmId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

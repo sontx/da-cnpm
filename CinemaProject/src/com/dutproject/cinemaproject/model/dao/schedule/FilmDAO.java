@@ -39,4 +39,8 @@ public class FilmDAO implements IFilmService {
 		filmService.updateFilm(film);
 	}
 
+	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) throws SQLException {
+		return filmService.getFilm(filmId);
+	}
+
 }

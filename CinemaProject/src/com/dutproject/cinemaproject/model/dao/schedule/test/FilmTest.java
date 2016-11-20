@@ -48,4 +48,10 @@ public class FilmTest implements IFilmService {
 		
 	}
 
+	@Override
+	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
