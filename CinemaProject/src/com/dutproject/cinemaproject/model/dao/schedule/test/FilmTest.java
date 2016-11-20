@@ -1,5 +1,6 @@
 package com.dutproject.cinemaproject.model.dao.schedule.test;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,12 @@ public class FilmTest implements IFilmService {
 
 	@Override
 	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}

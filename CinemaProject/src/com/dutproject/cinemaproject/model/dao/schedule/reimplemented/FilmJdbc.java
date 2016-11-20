@@ -128,4 +128,25 @@ public class FilmJdbc extends JdbcService implements IFilmService {
 		}
 	}
 
+	@Override
+	public void updateFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call [film_updateFilm](?,?,?,?,?)}");
+			callable.setInt(1, film.getFilmId());
+			callable.setInt(2, film.getLength());
+			callable.setString(3, film.getFilmName());
+			callable.setString(4, film.getDescription());
+			callable.setInt(5, film.getAgeLimithed());
+			callable.executeUpdate();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 }

@@ -35,4 +35,8 @@ public class FilmDAO implements IFilmService {
 		filmService.addFilm(film);
 	}
 
+	public void updateFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException {
+		filmService.updateFilm(film);
+	}
+
 }
