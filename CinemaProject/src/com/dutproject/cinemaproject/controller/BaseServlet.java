@@ -30,4 +30,15 @@ public abstract class BaseServlet extends HttpServlet {
 	
 	protected abstract void doWork(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	
+	protected final void showErrorMessage(String message, String page, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("message", message);
+		request.setAttribute("page", page);
+		request.getServletContext().getRequestDispatcher("/jsp/Error.jsp").forward(request, response);
+	}
+	
+	protected final void showSuccessMessage(String message, String page, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("message", message);
+		request.setAttribute("page", page);
+		request.getServletContext().getRequestDispatcher("/jsp/Success.jsp").forward(request, response);
+	}
 }

@@ -75,4 +75,57 @@ public class FilmJdbc extends JdbcService implements IFilmService {
 		return listFilm;
 	}
 
+	@Override
+	public com.dutproject.cinemaproject.model.bean.Film getFilmByName(String fullName) throws SQLException {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call [film_getFilmByName](?)}");
+			callable.setString(1, fullName);
+			ResultSet rs = callable.executeQuery();
+			com.dutproject.cinemaproject.model.bean.Film film = null;
+			if (rs.next()) {
+				film = new com.dutproject.cinemaproject.model.bean.Film();
+				int filmId = rs.getInt("filmId");
+				String filmName = rs.getString("filmName");
+				String description = rs.getString("description");
+				int length = rs.getInt("length");
+				int ageLimited = rs.getInt("ageLimited");
+				film.setFilmId(filmId);
+				film.setFilmName(filmName);
+				film.setDescription(description);
+				film.setLength(length);
+				film.setAgeLimithed(ageLimited);
+			}
+			rs.close();
+			return film;
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	@Override
+	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call [film_addFilm](?,?,?,?)}");
+			callable.setInt(1, film.getLength());
+			callable.setString(2, film.getFilmName());
+			callable.setString(3, film.getDescription());
+			callable.setInt(4, film.getAgeLimithed());
+			callable.executeUpdate();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 }
