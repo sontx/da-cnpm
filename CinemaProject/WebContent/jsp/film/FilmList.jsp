@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <%@page import="com.dutproject.cinemaproject.model.bean.Film"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,38 +23,56 @@
 
 	<%
 		List<Film> films = (List<Film>) request.getAttribute("films");
-		if (films != null && films.size() > 0) {
 	%>
-	<div class="container" style="padding-top: 2%">
-	    <div class="panel panel-default">
-			<table class="table">
-				<tr>
-					<td>ID</td>
-					<td>Name</td>
-					<td>Length</td>
-					<td>Description</td>
-					<td>Age Limited</td>
-				</tr>
-				<% for (Film film : films) { %>
-				<tr>
-					<td><%=film.getFilmId()%></td>
-					<td><%=film.getFilmName()%></td>
-					<td><%=film.getLength()%></td>
-					<td><%=film.getDescription()%></td>
-					<td><%=film.getAgeLimithed()%></td>
-				</tr>
-				<% } %>
-			</table>
+	
+	<div class="container">
+		<div style="padding-bottom: 15px">
+			<a class="btn btn-primary"
+				href="<%=request.getContextPath() + "/film/AddFilmForm"%>"> <span
+				class="glyphicon glyphicon-plus"></span> Add...
+			</a>
 		</div>
-	</div>
+	<% if (films != null && films.size() > 0) {  %>
+		<table class="table table-bordered">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Length</th>
+				<th>Description</th>
+				<th>Age Limited</th>
+				<th></th>
+			</tr>
+			<% for (Film film : films) { %>
+			<tr>
+				<td><%=film.getFilmId()%></td>
+				<td><%=film.getFilmName()%></td>
+				<td><%=film.getLength() + " minutes"%></td>
+				<td style="max-width: 150px;"><%=StringEscapeUtils.escapeHtml4(film.getDescription())%></td>
+				<td class="text-center" style="white-space: nowrap;width: 1%;font-size: 20px;">
+				<% if (film.getAgeLimithed() > 0) { %>
+					<span  class="label label-danger"><%=film.getAgeLimithed() + "+"%></span>
+				<% } else { %>
+					<span  class="label label-info">No</span>
+				<% } %>
+				</td>
+				<td class="text-center" style="white-space: nowrap;width: 1%;"><a class="btn btn-info"
+						href="<%=request.getContextPath() + "/film/UpdateFilmForm?id=" + film.getFilmId()%>">
+							<span class="glyphicon glyphicon-edit"></span> Edit
+					</a> <a class="btn btn-danger"
+						onclick="return confirm('Are you sure?')"
+						href="<%=request.getContextPath() + "/film/DeleteFilmAction?id=" + film.getFilmId()%>">
+							<span class="glyphicon glyphicon-remove"></span> Delete
+					</a></td>
+			</tr>
+			<% } %>
+		</table>
 	<%
 		} else {
 	%>
-	<div class="container" style="padding-top: 2%">
-	   <p>Can't not load films list.</p>
-	</div>
+		You don't have any film.
 	<%
 		}
 	%>
+	</div>
 </body>
 </html>
