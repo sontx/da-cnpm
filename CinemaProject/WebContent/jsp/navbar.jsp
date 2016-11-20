@@ -4,8 +4,14 @@
 
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
+		<%
+		Object homeObj = request.getSession().getAttribute("home");
+		String home = "#";
+		if (homeObj != null)
+			home = homeObj.toString();
+		%>
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Cinema Management</a>
+			<a class="navbar-brand" href="<%=home%>">Cinema Management</a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<%

@@ -57,6 +57,8 @@ public class LoginActionServlet extends BaseServlet {
 		default:
 			break;
 		}
+		if (permission != Account.NO_PERMISSION)
+			request.getSession().setAttribute("home", site);
 		response.sendRedirect(site);
 	}
 
