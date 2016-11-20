@@ -21,12 +21,12 @@ import com.dutproject.cinemaproject.model.bo.FilmBo;
  * Oct 23, 2016
  */
 @WebServlet(name = "FilmsList", urlPatterns = { "/film/FilmList" })
-public class FilmsListSeverlet extends BaseServlet {
+public class FilmsListSeverlet extends FilmFilterServlet {
 	private FilmBo mFilmBo = FilmBo.getInstance();
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
 		int pageNumber = tryParseInt(sPageNumber, 1);
