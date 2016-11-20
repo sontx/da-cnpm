@@ -28,7 +28,7 @@
 
 				<legend>Update Film: <%= film.getFilmName() %></legend>
 				
-				<input type="hidden" name="id" value="<%=film.getFilmId() %> %>" />
+				<input type="hidden" name="id" value="<%=film.getFilmId() %>" />
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="name"> Full Name</label>
