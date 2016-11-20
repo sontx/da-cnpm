@@ -181,4 +181,21 @@ public class FilmJdbc extends JdbcService implements IFilmService {
 		}
 	}
 
+	@Override
+	public void deleteFilm(int id) throws SQLException {
+		CallableStatement callable = null;
+		try {
+			callable = connection.prepareCall("{call [film_deleteFilm](?)}");
+			callable.setInt(1, id);
+			callable.executeUpdate();
+		} finally {
+			if (callable != null) {
+				try {
+					callable.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 }

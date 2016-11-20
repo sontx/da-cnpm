@@ -43,4 +43,8 @@ public class FilmDAO implements IFilmService {
 		return filmService.getFilm(filmId);
 	}
 
+	public void deleteFilm(int id) throws SQLException {
+		filmService.deleteFilm(id);
+	}
+
 }
