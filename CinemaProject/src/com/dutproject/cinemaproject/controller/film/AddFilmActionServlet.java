@@ -12,11 +12,11 @@ import com.dutproject.cinemaproject.model.bean.Film;
 import com.dutproject.cinemaproject.model.bo.schedule.FilmBO;
 
 @WebServlet(name = "AddFilmAction", urlPatterns = { "/film/AddFilmAction" })
-public class AddFilmAction extends FilmFilterServlet {
+public class AddFilmActionServlet extends BaseServlet {
 	private FilmBO filmBO = new FilmBO();
 
 	@Override
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String fullName = request.getParameter("fullName");
 		String sDuration = request.getParameter("duration");
