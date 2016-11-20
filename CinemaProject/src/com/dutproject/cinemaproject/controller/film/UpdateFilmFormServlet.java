@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dutproject.cinemaproject.controller.BaseServlet;
 
-@WebServlet(name = "AddFilmForm", urlPatterns = { "/film/AddFilmForm" })
+@WebServlet(name = "UpdateFilmForm", urlPatterns = { "/film/UpdateFilmForm" })
 public class UpdateFilmFormServlet extends FilmFilterServlet {
 
 	@Override
