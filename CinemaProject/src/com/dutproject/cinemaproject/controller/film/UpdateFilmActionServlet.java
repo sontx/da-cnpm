@@ -38,9 +38,9 @@ public class UpdateFilmActionServlet extends FilmFilterServlet {
 					film.setDescription(description);
 					film.setAgeLimithed(ageLimited);
 					if (filmBO.updateFilm(film))
-						showSuccessMessage("Added film " + fullName, "FilmList", request, response);
+						showSuccessMessage("Updated film " + fullName, "FilmList", request, response);
 					else
-						showErrorMessage("Something wrong when add new film.", "UpdateFilmForm?id=" + sId, request, response);
+						showErrorMessage("Something wrong when update new film.", "UpdateFilmForm?id=" + sId, request, response);
 				} else {
 					showErrorMessage("Duration must greater than 0.", "UpdateFilmForm?id=" + sId, request, response);
 				}
