@@ -17,7 +17,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="alert alert-danger">
-			<strong>Success!</strong>
+			<strong>Error!</strong>
 			<%=request.getAttribute("message")%>
 			<%
 				if (request.getAttribute("page") != null) {
