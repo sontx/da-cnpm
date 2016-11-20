@@ -1,5 +1,6 @@
 package com.dutproject.cinemaproject.model.dao.schedule;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.dutproject.cinemaproject.model.bean.schedule.Film;
@@ -18,6 +19,20 @@ public class FilmDAO implements IFilmService {
 	@Override
 	public List<Film> searchFilmByName(String keyword, int maxOfRecords) {
 		return filmService.searchFilmByName(keyword, maxOfRecords);
+	}
+
+	public com.dutproject.cinemaproject.model.bean.Film getFilmByName(String fullName) {
+		try {
+			return filmService.getFilmByName(fullName);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException {
+		filmService.addFilm(film);
 	}
 
 }

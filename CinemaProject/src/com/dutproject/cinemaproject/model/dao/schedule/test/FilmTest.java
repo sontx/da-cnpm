@@ -29,4 +29,16 @@ public class FilmTest implements IFilmService {
 		return listFilms;
 	}
 
+	@Override
+	public com.dutproject.cinemaproject.model.bean.Film getFilmByName(String fullName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
