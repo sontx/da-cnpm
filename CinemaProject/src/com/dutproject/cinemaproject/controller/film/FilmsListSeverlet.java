@@ -29,8 +29,8 @@ public class FilmsListSeverlet extends BaseServlet {
 	protected void doWork(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
-		int pageNumber = tryParseInt(sPageNumber, 1) - 1;
-		List<Film> films = mFilmBo.getFilms(pageNumber * 50, 50);
+		int pageNumber = tryParseInt(sPageNumber, 1);
+		List<Film> films = mFilmBo.getFilms(pageNumber, 50);
 		request.setAttribute("films", films);
 		request.getRequestDispatcher("/jsp/film/FilmList.jsp").forward(request, response);
 	}
