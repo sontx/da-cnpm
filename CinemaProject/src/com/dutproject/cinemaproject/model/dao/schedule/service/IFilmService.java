@@ -11,5 +11,7 @@ public interface IFilmService {
 	public List<Film> searchFilmByName(String keyword, int maxOfRecords);
 	public com.dutproject.cinemaproject.model.bean.Film getFilmByName(String fullName) throws SQLException;
 	public void addFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException;
+	public void updateFilm(com.dutproject.cinemaproject.model.bean.Film film) throws SQLException;
+	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) throws SQLException;
 	
 }

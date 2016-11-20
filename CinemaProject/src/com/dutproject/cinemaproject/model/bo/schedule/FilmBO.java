@@ -31,4 +31,34 @@ public class FilmBO {
 		}
 		return false;
 	}
+
+	public boolean checkExistFilmById(int id) {
+		return getFilmById(id) != null;
+	}
+
+	public boolean checkDuplicateFilmName(int id, String fullName) {
+		com.dutproject.cinemaproject.model.bean.Film film = filmDAO.getFilmByName(fullName);
+		return film != null && film.getFilmId() != id;
+	}
+
+	public boolean updateFilm(com.dutproject.cinemaproject.model.bean.Film film) {
+		try {
+			filmDAO.updateFilm(film);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public com.dutproject.cinemaproject.model.bean.Film getFilm(int filmId) {
+		try {
+			return filmDAO.getFilm(filmId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
