@@ -11,7 +11,7 @@ import com.dutproject.cinemaproject.controller.BaseServlet;
 import com.dutproject.cinemaproject.model.bean.Film;
 import com.dutproject.cinemaproject.model.bo.schedule.FilmBO;
 
-@WebServlet(name = "AddFilmAction", urlPatterns = { "/film/AddFilmAction" })
+@WebServlet(name = "UpdateFilmAction", urlPatterns = { "/film/UpdateFilmAction" })
 public class UpdateFilmActionServlet extends FilmFilterServlet {
 	private FilmBO filmBO = new FilmBO();
 
@@ -32,6 +32,7 @@ public class UpdateFilmActionServlet extends FilmFilterServlet {
 				if (duration > 0) {
 					int ageLimited = tryParseInt(sAgeLimited, 0);
 					Film film = new Film();
+					film.setFilmId(id);
 					film.setFilmName(fullName);
 					film.setLength(duration);
 					film.setDescription(description);
