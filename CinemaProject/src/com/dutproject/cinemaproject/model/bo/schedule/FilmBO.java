@@ -72,4 +72,14 @@ public class FilmBO {
 		}
 		return false;
 	}
+
+	public List<com.dutproject.cinemaproject.model.bean.Film> searchFilm(String keyword, int pageNumber, int maxOfRecords) {
+		try {
+			return filmDAO.searchFilm(keyword, pageNumber, maxOfRecords);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

@@ -60,4 +60,11 @@ public class FilmTest implements IFilmService {
 		
 	}
 
+	@Override
+	public List<com.dutproject.cinemaproject.model.bean.Film> searchFilm(String keyword, int pageNumber,
+			int maxOfRecords) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

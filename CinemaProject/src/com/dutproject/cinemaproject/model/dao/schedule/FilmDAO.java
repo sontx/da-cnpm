@@ -47,4 +47,8 @@ public class FilmDAO implements IFilmService {
 		filmService.deleteFilm(id);
 	}
 
+	public List<com.dutproject.cinemaproject.model.bean.Film> searchFilm(String keyword, int pageNumber, int maxOfRecords) throws SQLException {
+		return filmService.searchFilm(keyword, pageNumber, maxOfRecords);
+	}
+
 }
