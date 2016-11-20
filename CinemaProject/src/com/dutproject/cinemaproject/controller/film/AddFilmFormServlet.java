@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.dutproject.cinemaproject.controller.BaseServlet;
 
 @WebServlet(name = "AddFilmForm", urlPatterns = { "/film/AddFilmForm" })
-public class AddFilmFormServlet extends BaseServlet {
+public class AddFilmFormServlet extends FilmFilterServlet {
 
 	@Override
-	protected void doWork(HttpServletRequest request, HttpServletResponse response)
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/jsp/film/AddFilmForm.jsp").forward(request, response);
 	}
