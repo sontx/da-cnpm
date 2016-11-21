@@ -25,7 +25,7 @@
 		<form class="form-horizontal" action="UpdateRoomAction" method="post">
 		<fieldset>
 		
-        <legend class="text-center">Update Room</legend>
+        <legend class="text-center">Add Room</legend>
         
         <div class="form-group">
           <label class="col-md-4 control-label">Room Name</label>  
