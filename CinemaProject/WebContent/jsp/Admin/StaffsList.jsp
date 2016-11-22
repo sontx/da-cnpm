@@ -21,7 +21,6 @@
 
 	<%
 		List<AccountProfile> staffs = (List<AccountProfile>) request.getAttribute("staffs");
-		if (staffs != null && staffs.size() > 0) {
 	%>
 	<div class="container">
 		<div style="padding-bottom: 15px">
@@ -30,6 +29,7 @@
 				class="glyphicon glyphicon-plus"></span> Add...
 			</a>
 		</div>
+		<%if (staffs != null && staffs.size() > 0) { %>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
