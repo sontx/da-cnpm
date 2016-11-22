@@ -54,7 +54,7 @@
 					<td><%=staff.getPhoneNumber()%></td>
 					<td><%=staff.getIdentityCard()%></td>
 					<td><%=type%></td>
-					<td class="text-center"><a class="btn btn-info"
+					<td class="text-center" style="white-space: nowrap; width: 1%;"><a class="btn btn-info"
 						href="<%=request.getContextPath() + "/Admin/UpdateStaffForm?id=" + staff.getAccount().getId()%>">
 							<span class="glyphicon glyphicon-edit"></span> Edit
 					</a> <a class="btn btn-danger"
