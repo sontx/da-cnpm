@@ -24,14 +24,33 @@ import com.dutproject.cinemaproject.model.bo.FilmBo;
 public class FilmsListSeverlet extends FilmFilterServlet {
 	private FilmBo mFilmBo = FilmBo.getInstance();
 	private static final long serialVersionUID = 1L;
+	private static final int MAX_ENTRIES = 5;
 
 	@Override
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int maxPageNumber = getMaxPageNumber();
+		int pageNumber = getPageNumber(request, maxPageNumber);
+		List<Film> films = mFilmBo.getFilms(pageNumber, MAX_ENTRIES);
+		request.setAttribute("films", films);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("maxPageNumber", maxPageNumber);
+		request.getRequestDispatcher("/jsp/film/FilmList.jsp").forward(request, response);
+	}
+
+	private int getMaxPageNumber() {
+		int numOfFilms = mFilmBo.getNumberOfFilms();
+		int maxPageNumber = (numOfFilms + MAX_ENTRIES - 1) / MAX_ENTRIES;
+		return maxPageNumber;
+	}
+
+	private int getPageNumber(HttpServletRequest request, int maxPageNumber) {
 		String sPageNumber = request.getParameter("page");
 		int pageNumber = tryParseInt(sPageNumber, 1);
-		List<Film> films = mFilmBo.getFilms(pageNumber, 50);
-		request.setAttribute("films", films);
-		request.getRequestDispatcher("/jsp/film/FilmList.jsp").forward(request, response);
+		if (0 >= pageNumber)
+			pageNumber = 1;
+		if (maxPageNumber < pageNumber)
+			pageNumber = maxPageNumber;
+		return pageNumber;
 	}
 }

@@ -91,6 +91,29 @@
 				}
 			%>
 		</table>
+		<!-- pagination -->
+		<%
+		    int pageNumber = (Integer)request.getAttribute("pageNumber");
+		    int previousPage = pageNumber - 1;
+		    if (previousPage <= 0) {
+		    	previousPage = 1;
+		    }
+		    int maxPageNumber = (Integer) request.getAttribute("maxPageNumber");
+		    int nextPage = pageNumber + 1;
+		    if (nextPage > maxPageNumber) {
+		        nextPage = maxPageNumber;
+		    }
+	    %>
+		<div class="text-center form-inline">
+            <div class="pagination">
+               <a href="<%=request.getContextPath() %>/film/FilmList?page=<%=previousPage %>" aria-label="Previous">
+               <span aria-hidden="true">&laquo;Trước</span></a>
+               <input class="form-control input-sm" id="pageNumber" type="text" name="pageNumber" value="<%=pageNumber %>" size="1" onkeydown="submitWhenEnter();">
+               / <%=maxPageNumber %>
+               <a href="<%=request.getContextPath() %>/film/FilmList?page=<%=nextPage %>" aria-label="Next">
+               <span aria-hidden="true">Sau&raquo;</span></a>
+            </div>
+        </div>
 		<%
 			} else {
 		%>
@@ -99,5 +122,16 @@
 			}
 		%>
 	</div>
+	
+	<script type="text/javascript">
+		function submitWhenEnter() {
+	        if (event.keyCode == 13) {
+	            var pageNumber = document.getElementById("pageNumber").value;
+	            var url = "<%=request.getContextPath() %>/film/FilmList?page=" + pageNumber;
+	            window.location = url;
+	            return false;
+	        }
+	    }
+	</script>
 </body>
 </html>
