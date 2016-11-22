@@ -22,10 +22,6 @@
 <body onload="showNotification()">
 
 <script type="text/javascript">
-	function showNotification() {
-		
-	}
-	
 	function submitWhenEnter() {
 		if (event.keyCode == 13) {
 		    var pageNumber = document.getElementById("pageNumber").value;
