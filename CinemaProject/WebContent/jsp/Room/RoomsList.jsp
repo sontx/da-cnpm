@@ -39,7 +39,7 @@
 		<%
 			if (rooms.size() > 0) {
 		%>
-		<table class="table">
+		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -58,11 +58,15 @@
 					<td><%=room.getRoomName()%></td>
 					<td><%=room.getRows() * room.getColumns()%></td>
 					<td><%=Room.getStatusString(room.getStatus())%></td>
-					<td><a
-						href="<%=request.getContextPath() + "/Room/UpdateRoomForm?id=" + room.getId()%>">Edit</a>
-						<a onclick="return confirm('Are you sure?')"
-						href="<%=request.getContextPath() + "/Room/DeleteRoomAction?id=" + room.getId()%>">Delete</a>
-					</td>
+					<td class="text-center" style="white-space: nowrap; width: 1%;"><a
+						class="btn btn-info"
+						href="<%=request.getContextPath() + "/Room/UpdateRoomForm?id=" + room.getId()%>">
+							<span class="glyphicon glyphicon-edit"></span> Edit
+					</a> <a class="btn btn-danger"
+						onclick="return confirm('Are you sure?')"
+						href="<%=request.getContextPath() + "/Room/DeleteRoomAction?id=" + room.getId()%>">
+							<span class="glyphicon glyphicon-remove"></span> Delete
+					</a></td>
 				</tr>
 				<%
 					}
