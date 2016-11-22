@@ -22,7 +22,7 @@
     <jsp:include page="/jsp/navbar.jsp"></jsp:include>
 
 	<div class="container">
-		<form class="form-horizontal" action="UpdateRoomAction" method="post">
+		<form class="form-horizontal" action="AddRoomAction" method="post">
 		<fieldset>
 		
         <legend class="text-center">Add Room</legend>
