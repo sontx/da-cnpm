@@ -5,7 +5,7 @@ public class Chair {
 	private int roomId;
 	private String position;
 	private String state;
-	private static final String STATE_AVAILABLE = "Available";
+	private static final String STATE_AVAILABLE = "1";
 
 	public Chair(int chairId, int roomId, String position, String state) {
 		setChairId(chairId);
