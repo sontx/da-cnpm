@@ -18,7 +18,7 @@ import com.dutproject.cinemaproject.model.bo.TicketBO;
 @WebServlet("/MovieListServlet")
 public class MovieListServlet extends TicketFilterServlet {
 	private static final long serialVersionUID = 1L;
-	public static int MAX_SCHEDULE_PER_PAGE = 2;
+	public static int MAX_SCHEDULE_PER_PAGE = 5;
 	private TicketBO ticketBO = new TicketBO();
 
 	@Override
