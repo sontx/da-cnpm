@@ -30,6 +30,10 @@
 			return false;
 		}
 	}
+	
+    function filterChar() {
+        return event.charCode >= 48 && event.charCode <= 57;
+    }
 </script>
 
     <jsp:include page="/jsp/navbar.jsp"></jsp:include>
@@ -109,7 +113,7 @@
             <div class="pagination">
                <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=previousPageNumber %>" aria-label="Previous">
                <span aria-hidden="true">&laquo;Trước</span></a>
-               <input class="form-control input-sm" id="pageNumber" type="text" name="pageNumber" value="<%=pageNumber %>" size="1" onkeydown="submitWhenEnter();">
+               <input class="form-control input-sm" id="pageNumber" type="text" name="pageNumber" value="<%=pageNumber %>" size="1" onkeydown="submitWhenEnter();"  onkeypress='return filterChar();'>
                / <%=maxPageNumber %>
                <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=nextPageNumber %>" aria-label="Next">
                <span aria-hidden="true">Sau&raquo;</span></a>
