@@ -13,7 +13,7 @@
 <html>
 
 <head>
-    <title>Cập nhật lịch chiếu</title>
+    <title>Update Schedule</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,12 +33,12 @@
 	    <form class="form-horizontal" action="<%=request.getContextPath() %>/EditSchedule" method="post">
         <fieldset>
         
-        <legend class="text-center">Cập nhật Lịch chiếu</legend>
+        <legend class="text-center">Update Schedule</legend>
         
         <input type="hidden" name="scheduleId" value="<%=schedule.getScheduleId() %>">
         
         <div class="form-group">
-         <label class="col-md-4 control-label" for="Phim">Phim:</label>
+         <label class="col-md-4 control-label" for="Phim">Film:</label>
          <div class="col-md-5">
            <select id="Phim" name="filmId" class="form-control">
              <%
@@ -55,7 +55,7 @@
         </div>
         
         <div class="form-group">
-          <label class="col-md-4 control-label" for="selectbasic">Phòng chiếu:</label>
+          <label class="col-md-4 control-label" for="selectbasic">Room:</label>
           <div class="col-md-5">
             <select id="selectbasic" name="roomId" class="form-control">
               <%
@@ -77,7 +77,7 @@
         %>
             
         <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Ngày:</label>  
+          <label class="col-md-4 control-label" for="textinput">Date:</label>  
           <div class="col-md-5">
             <input id="textinput" name="date" type="text" value="<%=Converter.toStringOnlyDate(startTime) %>"
                 placeholder="" class="form-control input-md" required="">
@@ -85,7 +85,7 @@
         </div>
         
         <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Bắt đầu</label>  
+          <label class="col-md-4 control-label" for="textinput">Begin</label>  
           <div class="col-md-5">
 	         <input id="textinput" name="startTime" type="text" value="<%=Converter.toStringOnlyTime(startTime) %>"
 	           placeholder="" class="form-control input-md" required="">
@@ -93,7 +93,7 @@
         </div>
         
         <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Kết thúc</label>  
+          <label class="col-md-4 control-label" for="textinput">End</label>  
           <div class="col-md-5">
 	          <input id="textinput" name="endTime" type="text" value="<%=Converter.toStringOnlyTime(endTime) %>"
 	               placeholder="" class="form-control input-md" required="">
@@ -103,8 +103,8 @@
         <div class="form-group text-center">
           <label class="col-md-4 control-label" for="singlebutton"></label>
           <div class="col-md-4">
-            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success">Cập nhật</button>
-            <a class="btn btn-default" onclick="history.go(-1);">Hủy</a>
+            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success">Update</button>
+            <a class="btn btn-default" onclick="history.go(-1);">Cancel</a>
           </div>
         </div>
         

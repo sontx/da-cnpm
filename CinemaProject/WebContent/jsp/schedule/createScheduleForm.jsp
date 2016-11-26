@@ -10,7 +10,7 @@
 <html>
 
 <head>
-    <title>Tạo Lịch chiếu</title>
+    <title>Create Schedule</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,13 +28,13 @@
 		<form class="form-horizontal" action="<%=request.getContextPath() %>/CreateSchedule" method="post">
 		<fieldset>
 		
-		<legend class="text-center">Tạo Lịch chiếu</legend>
+		<legend class="text-center">Create Schedule</legend>
 		
 		<div class="form-group">
-		 <label class="col-md-4 control-label" for="Phim">Phim:</label>
+		 <label class="col-md-4 control-label" for="Phim">Film:</label>
 		 <div class="col-md-5">
 		   <select id="Phim" name="filmId" class="form-control">
-		     <option value="-1" selected="selected">Chọn phim</option>
+		     <option value="-1" selected="selected">Select Film</option>
              <%
              List<Film> listFilms = new FilmBO().searchFilmByName("", 3);
              for (Film film : listFilms) {
@@ -48,10 +48,10 @@
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="selectbasic">Phòng chiếu:</label>
+		  <label class="col-md-4 control-label" for="selectbasic">Room:</label>
 		  <div class="col-md-5">
 		    <select id="selectbasic" name="roomId" class="form-control">
-		      <option value="-1" selected="selected">Chọn phòng</option>
+		      <option value="-1" selected="selected">Select Room</option>
               <%
               List<Room> listRooms = new RoomBO().getAllRooms();
               for (Room room : listRooms) {
@@ -65,14 +65,14 @@
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Ngày:</label>  
+		  <label class="col-md-4 control-label" for="textinput">Date:</label>  
 		  <div class="col-md-5">
 		  <input id="textinput" name="date" type="text" placeholder="" class="form-control input-md" required="">
 		  </div>
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Bắt đầu</label>  
+		  <label class="col-md-4 control-label" for="textinput">Begin</label>  
 		  <div class="col-md-5">
 		  <input id="textinput" name="startTime" type="text" placeholder="" class="form-control input-md" required="">
 		    
@@ -80,7 +80,7 @@
 		</div>
 		
 		<div class="form-group">
-		  <label class="col-md-4 control-label" for="textinput">Kết thúc</label>  
+		  <label class="col-md-4 control-label" for="textinput">End</label>  
 		  <div class="col-md-5">
 		  <input id="textinput" name="endTime" type="text" placeholder="" class="form-control input-md" required="">
 		  </div>
@@ -89,8 +89,8 @@
 		<div class="form-group text-center">
 		  <label class="col-md-4 control-label" for="singlebutton"></label>
 		  <div class="col-md-4">
-		    <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success">Tạo</button>
-		    <a class="btn btn-default" onclick="history.go(-1);">Hủy</a>
+		    <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success">Create</button>
+		    <a class="btn btn-default" onclick="history.go(-1);">Cancel</a>
 		  </div>
 		</div>
 		

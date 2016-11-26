@@ -10,7 +10,7 @@
 <html>
 
 <head>
-	<title>Danh sách Lịch chiếu</title>
+	<title>Schedules List</title>
 	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,13 +42,13 @@
     <div class="container">
 		<div class="row">
 			<div class="col-lg-6">
-				<a href="<%=request.getContextPath()%>/CreateScheduleForm">Tạo lịch chiếu</a>
+				<a href="<%=request.getContextPath()%>/CreateScheduleForm">Create Schedule</a>
 			</div>
 			<div class="col-lg-6">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Search for...">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Tìm</button>
+						<button class="btn btn-default" type="button">Search</button>
 					</span>
 				</div>
 			</div>
@@ -62,9 +62,9 @@
 			<table class="table">
 				<tr> <!-- table header -->
 					<th>#</th>
-					<th>Phim</th>
-					<th>Phòng chiếu</th>
-					<th>Thời gian chiếu</th>
+					<th>Film</th>
+					<th>Room</th>
+					<th>Time</th>
 					<th></th>
 				</tr>
 				<%
@@ -76,7 +76,7 @@
 					String filmName = filmBO.getFilmById(schedule.getFilmId()).getFilmName();
 					String roomName = roomBO.getRoomById(schedule.getRoomId()).getRoomName();
 					String time = schedule.periodOfTimeToString();
-					String deleteConfirmMessage = String.format("Bạn có muốn xóa lịch chiếu %s tại %s lúc %s?", filmName, roomName, time);
+					String deleteConfirmMessage = String.format("Do you want to delete %s in %s at %s?", filmName, roomName, time);
 					%>
 				<tr>
 					<th><%=index++ %></th>
@@ -84,8 +84,8 @@
 					<td><%=roomName %></td>
 					<td><%=time %></td>
 					<td>
-						<a href="<%=request.getContextPath() %>/EditScheduleForm?id=<%=schedule.getScheduleId() %> ">Chỉnh sửa</a> |
-						<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>" onclick="return confirm('<%=deleteConfirmMessage %>')">Xóa</a>
+						<a href="<%=request.getContextPath() %>/EditScheduleForm?id=<%=schedule.getScheduleId() %> ">Edit</a> |
+						<a href="<%=request.getContextPath() %>/DeleteSchedule?id=<%=schedule.getScheduleId() %>" onclick="return confirm('<%=deleteConfirmMessage %>')">Delete</a>
 					</td>
 				</tr>
 					<%
@@ -112,11 +112,11 @@
 	   <div class="text-center form-inline">
             <div class="pagination">
                <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=previousPageNumber %>" aria-label="Previous">
-               <span aria-hidden="true">&laquo;Trước</span></a>
+               <span aria-hidden="true">&laquo;Back</span></a>
                <input class="form-control input-sm" id="pageNumber" type="text" name="pageNumber" value="<%=pageNumber %>" size="1" onkeydown="submitWhenEnter();"  onkeypress='return filterChar();'>
                / <%=maxPageNumber %>
                <a href="<%=request.getContextPath() %>/ScheduleManagement?pageNumber=<%=nextPageNumber %>" aria-label="Next">
-               <span aria-hidden="true">Sau&raquo;</span></a>
+               <span aria-hidden="true">Next&raquo;</span></a>
             </div>
         </div>
 	</div>
