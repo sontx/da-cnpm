@@ -8,8 +8,8 @@ import com.dutproject.cinemaproject.model.dao.AdminDAO;
 public class AdminBO {
 	private AdminDAO adminDAO = new AdminDAO();
 
-	public List<AccountProfile> getStaffs(int offset, int count) {
-		return adminDAO.getStaffs(offset, count);
+	public List<AccountProfile> getStaffs(int offset, int count, String keyword) {
+		return adminDAO.getStaffs(offset, count, keyword);
 	}
 
 	public boolean checkExistUserName(String userName) {

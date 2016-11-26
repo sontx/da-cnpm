@@ -7,7 +7,7 @@ import com.dutproject.cinemaproject.model.bean.AccountProfile;
 public interface IAdminService {
 	int getNumberOfStaffs();
 
-	List<AccountProfile> getStaffs(int offset, int count);
+	List<AccountProfile> getStaffs(int offset, int count, String keyword);
 
 	AccountProfile getStaffByUserName(String userName);
 

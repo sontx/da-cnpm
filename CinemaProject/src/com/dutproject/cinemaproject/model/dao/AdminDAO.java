@@ -17,8 +17,8 @@ public class AdminDAO implements IAdminService {
 	}
 
 	@Override
-	public List<AccountProfile> getStaffs(int offset, int count) {
-		return underlyingService.getStaffs(offset, count);
+	public List<AccountProfile> getStaffs(int offset, int count, String keyword) {
+		return underlyingService.getStaffs(offset, count, keyword);
 	}
 
 	public void addStaff(AccountProfile staff) {

@@ -35,12 +35,18 @@ public class AdminJdbc extends JdbcService implements IAdminService {
 	}
 
 	@Override
-	public List<AccountProfile> getStaffs(int offset, int count) {
+	public List<AccountProfile> getStaffs(int offset, int count, String keyword) {
 		CallableStatement callable = null;
 		try {
-			callable = connection.prepareCall("{call admin_getStaffs(?,?)}");
+			if (keyword == null || "".equals(keyword)) {
+				callable = connection.prepareCall("{call admin_getAllStaffs(?,?)}");
+			} else {
+				callable = connection.prepareCall("{call admin_getStaffs(?,?,?)}");
+				callable.setString(3, keyword);
+			}
 			callable.setInt(1, offset);
 			callable.setInt(2, count);
+			
 			ResultSet rs = callable.executeQuery();
 			List<AccountProfile> profiles = new ArrayList<>();
 			while (rs.next()) {

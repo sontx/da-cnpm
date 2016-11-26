@@ -15,14 +15,6 @@ public class AdminTest implements IAdminService {
 		return 3;
 	}
 
-	@Override
-	public List<AccountProfile> getStaffs(int offset, int count) {
-		List<AccountProfile> staffs = new ArrayList<>();
-		
-		
-		
-		return staffs;
-	}
 	
 	@Override
 	public void addStaff(AccountProfile staff) {
@@ -56,6 +48,12 @@ public class AdminTest implements IAdminService {
 
 	@Override
 	public AccountProfile getStaffById(int staffId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AccountProfile> getStaffs(int offset, int count, String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

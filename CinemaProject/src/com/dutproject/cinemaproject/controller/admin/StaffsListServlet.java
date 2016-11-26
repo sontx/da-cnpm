@@ -20,9 +20,13 @@ public class StaffsListServlet extends AdminFilterServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sPageNumber = request.getParameter("page");
+		String keyword = request.getParameter("keyword");
+		if (keyword == null)
+			keyword = "";
 		int pageNumber = tryParseInt(sPageNumber, 1);
-		List<AccountProfile> staffs = adminBO.getStaffs(pageNumber, 50);
+		List<AccountProfile> staffs = adminBO.getStaffs(pageNumber, 50, keyword);
 		request.setAttribute("staffs", staffs);
+		request.setAttribute("keyword", keyword);
 		request.getRequestDispatcher("/jsp/Admin/StaffsList.jsp").forward(request, response);
 	}
 }

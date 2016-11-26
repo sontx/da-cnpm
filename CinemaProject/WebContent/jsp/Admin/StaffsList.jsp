@@ -19,13 +19,28 @@
 
 	<%
 		List<AccountProfile> staffs = (List<AccountProfile>) request.getAttribute("staffs");
+		String lastKeyword = (String)request.getAttribute("keyword");
 	%>
 	<div class="container">
-		<div style="padding-bottom: 15px">
-			<a class="btn btn-primary"
-				href="<%=request.getContextPath() + "/Admin/AddStaffForm"%>"> <span
-				class="glyphicon glyphicon-plus"></span> Add...
-			</a>
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-9">
+					<a class="btn btn-primary"
+						href="<%=request.getContextPath() + "/Admin/AddStaffForm"%>"> <span
+						class="glyphicon glyphicon-plus"></span> Add...
+					</a>
+				</div>
+				<form class="col-md-3" action="StaffsList" method="get">
+					<div class="input-group col-md-12">
+						<input type="text" class="  search-query form-control"
+							placeholder="Search" name="keyword" value="<%=lastKeyword%>" /> <span class="input-group-btn">
+							<button class="btn btn-info" type="submit">
+								<span class=" glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
 		</div>
 		<%if (staffs != null && staffs.size() > 0) { %>
 		<table class="table table-bordered">
