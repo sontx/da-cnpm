@@ -59,4 +59,8 @@ public class FilmBo implements FilmListener {
 		return null;
 	}
 
+	public int getNumberOfFilms(String keyword) {
+		return mFilmDao.getNumberOfFilms(keyword);
+	}
+
 }

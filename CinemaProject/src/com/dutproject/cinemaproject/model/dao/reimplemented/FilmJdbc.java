@@ -154,6 +154,28 @@ public class FilmJdbc extends JdbcService implements  FilmListener  {
 		return film;
 	}
 
+	public int getNumberOfFilms(String keyword) {
+		CallableStatement callable = null;
+		int numberOfFilms = 0;
+		try {
+			callable = connection.prepareCall("{call film_searchFilmCount(?)}");
+			callable.setString(1, keyword);
+			ResultSet resultSet = callable.executeQuery();
+			if (resultSet.next())
+				numberOfFilms = resultSet.getInt(1);
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (null != callable) {
+				try {
+					callable.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return numberOfFilms;
+	}
+
 	
 
 }

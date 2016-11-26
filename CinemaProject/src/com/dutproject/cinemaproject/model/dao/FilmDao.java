@@ -59,4 +59,8 @@ public class FilmDao implements FilmListener {
 
 	}
 
+	public int getNumberOfFilms(String keyword) {
+		return mFilmJdbc.getNumberOfFilms(keyword);
+	}
+
 }

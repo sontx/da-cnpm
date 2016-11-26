@@ -24,6 +24,7 @@
 
 	<%
 		List<Film> films = (List<Film>) request.getAttribute("films");
+		String lastKeyword = (String)request.getAttribute("keyword");
 	%>
 
 	<div class="container">
@@ -35,10 +36,10 @@
 						class="glyphicon glyphicon-plus"></span> Add...
 					</a>
 				</div>
-				<form class="col-md-3" action="SearchFilmAction" method="get">
+				<form class="col-md-3" action="FilmList" method="get">
 					<div class="input-group col-md-12">
 						<input type="text" class="  search-query form-control"
-							placeholder="Search" name="keyword" /> <span class="input-group-btn">
+							placeholder="Search" name="keyword" value="<%=lastKeyword%>"  /> <span class="input-group-btn">
 							<button class="btn btn-info" type="submit">
 								<span class=" glyphicon glyphicon-search"></span>
 							</button>
@@ -98,6 +99,7 @@
 		    if (previousPage <= 0) {
 		    	previousPage = 1;
 		    }
+		    
 		    int maxPageNumber = (Integer) request.getAttribute("maxPageNumber");
 		    int nextPage = pageNumber + 1;
 		    if (nextPage > maxPageNumber) {
